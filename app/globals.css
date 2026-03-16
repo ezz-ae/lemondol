@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Lemondol — Fresh & Vibrant Theme */
+:root {
+  /* Brand Colors: Lemon Yellow, Lime Green, Soft Pink, Cream, Charcoal */
+  --background: #FEFDF0; /* Light Lemon Tint */
+  --foreground: #0F172A; /* Slate 900 */
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --popover: #FEFDF0;
+  --popover-foreground: #0F172A;
+  --primary: #F8E231; /* Lemon Yellow */
+  --primary-foreground: #0F172A;
+  --secondary: #A4D44D; /* Lime Green */
+  --secondary-foreground: #0F172A;
+  --muted: #F8F7EE;
+  --muted-foreground: #64748B;
+  --accent: #FFB7B2; /* Soft Coral/Pink */
+  --accent-foreground: #0F172A;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --input: #FFFFFF;
+  --ring: #F8E231;
+  --radius: 2rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-playfair);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html {
+    scroll-behavior: smooth;
+    touch-action: manipulation;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary/30;
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Hide scrollbars for a native app feel */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom soft shadow utility */
+.lemon-shadow {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+.lemon-shadow-xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+}
+
+/* Smooth transitions */
+.lemon-transition {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15%); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* Blur in animation */
+@keyframes blur-in {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-blur-in {
+  animation: blur-in 0.8s ease-out;
+}
+
+/* Scale fade in animation */
+@keyframes scale-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-fade-in {
+  animation: scale-fade-in 0.6s ease-out;
+}
+
+@keyframes dash {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes stroke-timer {
+  from { stroke-dashoffset: 880; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes scroll {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+.animate-stroke-timer {
+  animation: stroke-timer 60s linear infinite;
+}
+
+.animate-dash {
+  animation: dash 15s linear infinite;
+}
+
+@keyframes dash {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes stroke-timer {
+  from { stroke-dashoffset: 880; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-stroke-timer {
+  animation: stroke-timer 60s linear infinite;
+}
+
+.animate-dash {
+  animation: dash 10s linear infinite;
+}
