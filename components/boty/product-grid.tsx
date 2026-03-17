@@ -352,8 +352,8 @@ export function ProductGrid() {
                          <Image src={popupProduct.image} alt={popupProduct.name} fill className="object-cover" />
                       </div>
                       <div className="flex-1">
-                         <p className="text-xs font-bold leading-tight mb-1">Hey there! I feel {popupProduct.name} would match perfectly with the items you're looking at...</p>
-                         <p className="text-[10px] text-muted-foreground italic">"Things find their beauty once they find their soul."</p>
+                         <p className="text-xs font-bold leading-tight mb-1">Hey there! I feel {popupProduct.name} would match perfectly with the items you’re looking at...</p>
+                         <p className="text-[10px] text-muted-foreground italic">“Things find their beauty once they find their soul.”</p>
                       </div>
                    </div>
                    <div className="space-y-3">

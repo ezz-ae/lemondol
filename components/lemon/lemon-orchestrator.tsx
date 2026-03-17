@@ -116,7 +116,7 @@ export function LemonOrchestrator() {
              </div>
              
              <p className="text-sm font-bold leading-relaxed mb-8 text-slate-600 italic">
-                "{notification.content}"
+                “{notification.content}”
              </p>
 
              <div className="space-y-4">

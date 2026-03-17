@@ -9,6 +9,7 @@ const footerLinks = {
     { name: "Clothing", href: "/shop?category=clothing" },
     { name: "Accessories", href: "/shop?category=accessories" },
     { name: "Lifestyle", href: "/shop?category=lifestyle" },
+    { name: "One-Time Tattoos", href: "/shop?category=tattoos" },
     { name: "The Deep Store", href: "/deep-store" },
     { name: "AI Creative Studio", href: "/ai-studio" }
   ],

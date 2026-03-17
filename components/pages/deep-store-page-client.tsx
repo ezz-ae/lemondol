@@ -67,7 +67,7 @@ export default function DeepStorePage() {
             </div>
             <div className="space-y-4">
               <h1 className="text-5xl font-serif font-black tracking-tighter text-slate-900">
-                L'ADULTE <span className="text-purple-600">COLLECTION</span>
+                L’ADULTE <span className="text-purple-600">COLLECTION</span>
               </h1>
               <p className="text-slate-500 text-lg max-w-md mx-auto leading-relaxed">
                 Exclusive wellness and luxury essentials for the sophisticated woman. Verified access only.

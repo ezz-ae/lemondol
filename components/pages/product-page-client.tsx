@@ -6,7 +6,7 @@ import Link from "next/link"
 import { ChevronLeft, Minus, Plus, ChevronDown, Leaf, Heart, Award, Recycle, Star, Check, Shield, Sparkles } from "lucide-react"
 import { Header } from "@/components/lemon/header"
 import { Footer } from "@/components/lemon/footer"
-import { getProductById } from "@/lib/catalog"
+import { getProductById, type CatalogProduct } from "@/lib/catalog"
 
 const benefits = [
   { icon: Sparkles, label: "Fresh Design" },
@@ -24,6 +24,10 @@ export default function ProductPageClient({ productId }: { productId: string }) 
     return null
   }
 
+  return <ProductPageContent key={productId} product={product} productId={productId} />
+}
+
+function ProductPageContent({ product, productId }: { product: CatalogProduct; productId: string }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const [quantity, setQuantity] = useState(1)
   const [openAccordion, setOpenAccordion] = useState<AccordionSection | null>("details")
@@ -32,10 +36,6 @@ export default function ProductPageClient({ productId }: { productId: string }) 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [productId])
-
-  useEffect(() => {
-    setSelectedSize(product.sizes[0])
-  }, [product])
 
   const toggleAccordion = (section: AccordionSection) => {
     setOpenAccordion(openAccordion === section ? null : section)

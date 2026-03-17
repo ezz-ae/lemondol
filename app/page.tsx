@@ -3,6 +3,7 @@ import { Hero } from "@/components/lemon/hero"
 import { TrustBadges } from "@/components/lemon/trust-badges"
 import { FeatureSection } from "@/components/lemon/feature-section"
 import { ProductGrid } from "@/components/lemon/product-grid"
+import { TattooSpotlight } from "@/components/lemon/tattoo-spotlight"
 import { Testimonials } from "@/components/lemon/testimonials"
 import { CTABanner } from "@/components/lemon/cta-banner"
 import { Newsletter } from "@/components/lemon/newsletter"
@@ -11,11 +12,11 @@ import { StructuredData } from "@/components/seo/structured-data"
 import { createMetadata, getWebPageSchema } from "@/lib/seo"
 
 export const metadata = createMetadata({
-  title: "Fresh Fashion, Accessories & Lifestyle",
+  title: "Fresh Fashion, Accessories, Tattoos & Lifestyle",
   description:
-    "Shop Lemondol for bright fashion, playful accessories, and everyday lifestyle finds made to make each day feel like a fresh start.",
+    "Shop Lemondol for bright fashion, playful accessories, one-time tattoos, and everyday lifestyle finds made to make each day feel like a fresh start.",
   path: "/",
-  keywords: ["fresh fashion", "colorful accessories", "giftable lifestyle picks"],
+  keywords: ["fresh fashion", "colorful accessories", "temporary tattoos", "giftable lifestyle picks"],
 })
 
 export default function HomePage() {
@@ -25,7 +26,7 @@ export default function HomePage() {
         data={getWebPageSchema({
           title: "Lemondol Home",
           description:
-            "Shop Lemondol for bright fashion, playful accessories, and everyday lifestyle finds made to make each day feel like a fresh start.",
+            "Shop Lemondol for bright fashion, playful accessories, one-time tattoos, and everyday lifestyle finds made to make each day feel like a fresh start.",
           path: "/",
         })}
       />
@@ -34,6 +35,7 @@ export default function HomePage() {
         <Hero />
         <TrustBadges />
         <ProductGrid />
+        <TattooSpotlight />
         <FeatureSection />
         <Testimonials />
         <CTABanner />
