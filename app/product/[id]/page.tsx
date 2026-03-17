@@ -1,282 +1,62 @@
-"use client"
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { useParams } from "next/navigation"
-import { ChevronLeft, Minus, Plus, ChevronDown, Leaf, Heart, Award, Recycle, Star, Check, Shield, Sparkles } from "lucide-react"
-import { Header } from "@/components/lemon/header"
-import { Footer } from "@/components/lemon/footer"
+import ProductPageClient from "@/components/pages/product-page-client"
+import { StructuredData } from "@/components/seo/structured-data"
+import { catalogProducts, getProductById, getProductSeoImagePath } from "@/lib/catalog"
+import { createMetadata, getBreadcrumbSchema, getProductSchema } from "@/lib/seo"
 
-const products: Record<string, {
-  id: string
-  name: string
-  tagline: string
-  description: string
-  price: number
-  originalPrice: number | null
-  image: string
-  sizes: string[]
-  details: string
-  howToUse: string
-  ingredients: string
-  delivery: string
-}> = {
-  "lemon-dress": {
-    id: "lemon-dress",
-    name: "Sunshine Lemon Dress",
-    tagline: "Squeeze the day in style",
-    description: "A vibrant yellow cotton dress featuring a playful lemon print. Designed for comfort and a fresh look during sunny days.",
-    price: 45,
-    originalPrice: 55,
-    image: "/images/products/dress.png",
-    sizes: ["S", "M", "L", "XL"],
-    details: "Made from 100% organic cotton, this dress is breathable and soft on the skin. It features a cinched waist and a flowy skirt, perfect for summer outings.",
-    howToUse: "Machine wash cold with like colors. Tumble dry low or hang to dry for best results. Iron on low if needed.",
-    ingredients: "100% Organic Cotton, Natural Dyes.",
-    delivery: "Free standard shipping on orders over $50. Express shipping available at checkout. All orders ship within 1-2 business days. Returns accepted within 30 days."
-  },
-  "citrus-tote": {
-    id: "citrus-tote",
-    name: "Citrus Canvas Tote",
-    tagline: "Carry your sunshine everywhere",
-    description: "A durable canvas tote bag with a bold citrus design. Roomy enough for all your essentials and a bit of extra zest.",
-    price: 22,
-    originalPrice: null,
-    image: "/images/products/tote.png",
-    sizes: ["One Size"],
-    details: "Reinforced stitching and heavy-duty canvas ensure this bag lasts through every adventure. Features an inner pocket for smaller items.",
-    howToUse: "Spot clean with a damp cloth. Do not bleach. Air dry.",
-    ingredients: "Heavyweight Cotton Canvas.",
-    delivery: "Free standard shipping on orders over $50. Express shipping available at checkout. All orders ship within 1-2 business days. Returns accepted within 30 days."
-  }
+type ProductPageProps = {
+  params: Promise<{ id: string }>
 }
 
-const benefits = [
-  { icon: Sparkles, label: "Fresh Design" },
-  { icon: Heart, label: "Girls' Choice" },
-  { icon: Shield, label: "Secure Pay" },
-  { icon: Star, label: "Top Quality" }
-]
+export async function generateStaticParams() {
+  return catalogProducts.map((product) => ({ id: product.id }))
+}
 
-type AccordionSection = "details" | "howToUse" | "ingredients" | "delivery"
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { id } = await params
+  const product = getProductById(id)
 
-export default function ProductPage() {
-  const params = useParams()
-  const productId = params.id as string
-  const product = products[productId] || products["lemon-dress"]
-
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0])
-  const [quantity, setQuantity] = useState(1)
-  const [openAccordion, setOpenAccordion] = useState<AccordionSection | null>("details")
-  const [isAdded, setIsAdded] = useState(false)
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [productId])
-
-  const toggleAccordion = (section: AccordionSection) => {
-    setOpenAccordion(openAccordion === section ? null : section)
+  if (!product) {
+    return createMetadata({
+      title: "Product Not Found",
+      description: "The product you were looking for is no longer available.",
+      path: "/shop",
+      noIndex: true,
+    })
   }
 
-  const handleAddToCart = () => {
-    setIsAdded(true)
-    setTimeout(() => setIsAdded(false), 2000)
-  }
+  return createMetadata({
+    title: product.name,
+    description: `${product.description} Shop ${product.name} at Lemondol for $${product.price}.`,
+    path: `/product/${product.id}`,
+    image: getProductSeoImagePath(product.id),
+    keywords: [product.name, product.category, "buy online", "fashion product"],
+  })
+}
 
-  const accordionItems: { key: AccordionSection; title: string; content: string }[] = [
-    { key: "details", title: "Details", content: product.details },
-    { key: "howToUse", title: "How to Use", content: product.howToUse },
-    { key: "ingredients", title: "Ingredients", content: product.ingredients },
-    { key: "delivery", title: "Delivery & Returns", content: product.delivery }
-  ]
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params
+  const product = getProductById(id)
+
+  if (!product) {
+    notFound()
+  }
 
   return (
-    <main className="min-h-screen">
-      <Header />
-      
-      <div className="pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Back Link */}
-          <Link
-            href="/shop"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground lemon-transition mb-8"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            Back to Shop
-          </Link>
-
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-            {/* Product Image */}
-            <div className="relative aspect-square rounded-3xl overflow-hidden bg-card lemon-shadow">
-              <Image
-                src={product.image || "/placeholder.svg"}
-                alt={product.name}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-
-            {/* Product Info */}
-            <div className="flex flex-col">
-              {/* Header */}
-              <div className="mb-8">
-                <span className="text-sm tracking-[0.3em] uppercase text-primary mb-2 block">
-                  Lemondol Essentials
-                </span>
-                <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-3">
-                  {product.name}
-                </h1>
-                <p className="text-lg text-muted-foreground italic mb-4">
-                  {product.tagline}
-                </p>
-                
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <span className="text-sm text-muted-foreground">(128 reviews)</span>
-                </div>
-
-                <p className="text-foreground/80 leading-relaxed">
-                  {product.description}
-                </p>
-              </div>
-
-              {/* Price */}
-              <div className="flex items-center gap-3 mb-8">
-                <span className="text-3xl font-medium text-foreground">${product.price}</span>
-                {product.originalPrice && (
-                  <span className="text-xl text-muted-foreground line-through">
-                    ${product.originalPrice}
-                  </span>
-                )}
-              </div>
-
-              {/* Size Selector */}
-              <div className="mb-6">
-                <label className="text-sm font-medium text-foreground mb-3 block">Size</label>
-                <div className="flex gap-3">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      type="button"
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-6 py-3 rounded-full text-sm lemon-transition lemon-shadow ${
-                        selectedSize === size
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-card text-foreground hover:bg-card/80"
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quantity Selector */}
-              <div className="mb-8">
-                <label className="text-sm font-medium text-foreground mb-3 block">Quantity</label>
-                <div className="inline-flex items-center gap-4 bg-card rounded-full px-2 py-2 lemon-shadow">
-                  <button
-                    type="button"
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-foreground/60 hover:text-foreground lemon-transition"
-                    aria-label="Decrease quantity"
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="w-8 text-center font-medium text-foreground">{quantity}</span>
-                  <button
-                    type="button"
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-foreground/60 hover:text-foreground lemon-transition"
-                    aria-label="Increase quantity"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Add to Cart Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <button
-                  type="button"
-                  onClick={handleAddToCart}
-                  className={`flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm tracking-wide lemon-transition lemon-shadow ${
-                    isAdded
-                      ? "bg-primary/80 text-primary-foreground"
-                      : "bg-primary text-primary-foreground hover:bg-primary/90"
-                  }`}
-                >
-                  {isAdded ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      Added to Cart
-                    </>
-                  ) : (
-                    "Add to Cart"
-                  )}
-                </button>
-                <button
-                  type="button"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-transparent border border-foreground/20 text-foreground px-8 py-4 rounded-full text-sm tracking-wide lemon-transition hover:bg-foreground/5"
-                >
-                  Buy Now
-                </button>
-              </div>
-
-              {/* Benefits */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
-                {benefits.map((benefit) => (
-                  <div
-                    key={benefit.label}
-                    className="flex flex-col items-center gap-2 p-4 lemon-shadow bg-transparent shadow-none rounded-md"
-                  >
-                    <benefit.icon className="w-5 h-5 text-primary" />
-                    <span className="text-xs text-muted-foreground text-center">{benefit.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Accordion */}
-              <div className="border-t border-border/50">
-                {accordionItems.map((item) => (
-                  <div key={item.key} className="border-b border-border/50">
-                    <button
-                      type="button"
-                      onClick={() => toggleAccordion(item.key)}
-                      className="w-full flex items-center justify-between py-5 text-left"
-                    >
-                      <span className="font-medium text-foreground">{item.title}</span>
-                      <ChevronDown
-                        className={`w-5 h-5 text-muted-foreground lemon-transition ${
-                          openAccordion === item.key ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <div
-                      className={`overflow-hidden lemon-transition ${
-                        openAccordion === item.key ? "max-h-96 pb-5" : "max-h-0"
-                      }`}
-                    >
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {item.content}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Footer />
-    </main>
+    <>
+      <StructuredData
+        data={[
+          getBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Shop", path: "/shop" },
+            { name: product.name, path: `/product/${product.id}` },
+          ]),
+          getProductSchema(product),
+        ]}
+      />
+      <ProductPageClient productId={product.id} />
+    </>
   )
 }

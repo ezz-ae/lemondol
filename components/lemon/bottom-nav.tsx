@@ -20,8 +20,8 @@ export function BottomNav() {
   const showDeepStore = isAdultMode || pathname === "/deep-store"
 
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[100] px-4 pb-6 pt-2 pointer-events-none">
-      <nav className="max-w-md mx-auto bg-slate-900/95 backdrop-blur-xl rounded-[2.5rem] p-2 flex items-center justify-around shadow-[0_20px_50px_rgba(0,0,0,0.3)] pointer-events-auto border border-white/10">
+    <div className="sticky bottom-0 left-0 right-0 z-[100] px-4 pb-6 pt-2 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none">
+      <nav className="w-full bg-slate-900/95 backdrop-blur-xl rounded-[2.5rem] p-2 flex items-center justify-around shadow-[0_20px_50px_rgba(0,0,0,0.3)] pointer-events-auto border border-white/10">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = pathname === item.href
