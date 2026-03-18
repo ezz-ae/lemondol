@@ -120,7 +120,7 @@ export function LemonOrchestrator({ hasNeonData }: { hasNeonData?: boolean }) {
   }, [triggerMarketingNudge, hasNeonData])
 
   return (
-    <div className="fixed bottom-32 right-6 z-[100] flex flex-col items-end gap-3 sm:bottom-6">
+    <div className="absolute bottom-[calc(90px+env(safe-area-inset-bottom))] right-4 z-[100] flex flex-col items-end gap-3 sm:bottom-[110px] sm:right-6">
       <AnimatePresence>
         {notification && (
           <motion.div
@@ -128,7 +128,7 @@ export function LemonOrchestrator({ hasNeonData }: { hasNeonData?: boolean }) {
             animate={{ opacity: 1, y: 0, scale: 1, x: 0 }}
             exit={{ opacity: 0, y: 10, scale: 0.9, x: 10 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="w-[280px] origin-bottom-right"
+            className="w-[260px] sm:w-[280px] origin-bottom-right"
           >
             <Card className="overflow-hidden rounded-[2rem] border-2 border-primary/20 bg-white/95 backdrop-blur-xl text-slate-900 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative">
               <div className="p-1 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
@@ -146,8 +146,8 @@ export function LemonOrchestrator({ hasNeonData }: { hasNeonData?: boolean }) {
                   </button>
                 </div>
                 
-                <p className="mb-4 text-xs font-bold leading-relaxed text-slate-600">
-                  {notification.content}
+                <p className="mb-4 text-xs font-bold leading-relaxed text-slate-600 italic">
+                  “{notification.content}”
                 </p>
 
                 <Link href={notification.path || "/account"} onClick={() => setNotification(null)}>

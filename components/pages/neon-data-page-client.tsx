@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 import type { NeonDataItem, NeonDataPayload, NeonSource } from "@/lib/neon-data"
 import { generateBriefForNeonItem } from "@/lib/image-recreation"
+import { useCart } from "@/components/lemon/cart-context"
+import { useToast } from "@/hooks/use-toast"
 
 type SourceFilter = "all" | NeonSource
 
@@ -83,6 +85,8 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
   const [queryFilter, setQueryFilter] = useState("all")
   const [visibleCount, setVisibleCount] = useState(18)
   const [perfectingId, setPerfectingId] = useState<string | null>(null)
+  const { addItem } = useCart()
+  const { toast } = useToast()
 
   const filteredItems = useMemo(
     () => filterItems(data.items, sourceFilter, queryFilter, searchTerm),
@@ -362,10 +366,28 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
                                 }
                           }
                         />
-                        <div className="flex flex-col gap-2">
+                          <Button
+                            onClick={() => {
+                              addItem({
+                                id: item.id,
+                                name: item.title,
+                                description: item.subtitle || "Neon Discovery Item",
+                                price: item.priceValue,
+                                image: item.imageUrl
+                              })
+                              toast({
+                                title: "Synced to Cart",
+                                description: `${item.title} has been imported into your Lemondol session.`,
+                              })
+                            }}
+                            className="h-11 rounded-2xl bg-cyan-400 text-slate-900 hover:bg-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+                          >
+                            Sync
+                            <Zap className="h-4 w-4 ml-1 fill-current" />
+                          </Button>
                           <Button
                             asChild
-                            className="h-11 rounded-2xl bg-white text-slate-950 hover:bg-cyan-200"
+                            className="h-11 rounded-2xl bg-white/10 text-white hover:bg-white/20 border border-white/10"
                           >
                             <a href={item.productUrl} target="_blank" rel="noreferrer">
                               Open
@@ -383,7 +405,6 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
                           >
                             <Wand2 className="h-4 w-4" />
                           </Button>
-                        </div>
                       </div>
                     </div>
 

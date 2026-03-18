@@ -46,14 +46,14 @@ export function FullPageSlider() {
     offset: ["start end", "end start"]
   })
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9])
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
   return (
-    <section ref={containerRef} className="relative h-[100vh] w-full py-12 px-4 flex items-center justify-center overflow-hidden bg-slate-100">
+    <section ref={containerRef} className="relative aspect-[3/4] sm:aspect-auto sm:h-[600px] w-full py-6 px-4 flex items-center justify-center overflow-hidden bg-slate-50">
       <motion.div 
         style={{ scale, opacity }}
-        className="w-full max-w-[400px] h-full max-h-[700px] rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] relative bg-white"
+        className="w-full h-full rounded-[2.5rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)] relative bg-white"
       >
         <Carousel className="w-full h-full" opts={{ loop: true }}>
           <CarouselContent className="-ml-0 h-full">
