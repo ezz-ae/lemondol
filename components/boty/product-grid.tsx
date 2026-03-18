@@ -8,123 +8,11 @@ import { useCart } from "../lemon/cart-context"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { ProductCategory, shopProducts } from "@/lib/catalog"
 
-type Category = "clothing" | "accessories" | "lifestyle" | "tattoos"
+const PRODUCT_DISPLAY_LIMIT = 12
 
-const products = [
-  {
-    id: "lemon-dress",
-    name: "Sunshine Lemon Dress",
-    description: "Vibrant yellow cotton dress with lemon print",
-    price: 45,
-    originalPrice: 55,
-    image: "/images/products/dress.png",
-    badge: "Bestseller",
-    category: "clothing" as Category,
-  },
-  {
-    id: "lemon-tee",
-    name: "Lemon Squeeze Tee",
-    description: "100% organic cotton tee with cute graphic",
-    price: 25,
-    originalPrice: null,
-    image: "/images/products/tee.png",
-    badge: null,
-    category: "clothing" as Category,
-  },
-  {
-    id: "lemon-socks",
-    name: "Sour & Sweet Socks",
-    description: "Comfortable socks with tiny lemon patterns",
-    price: 12,
-    originalPrice: null,
-    image: "/images/products/socks.png",
-    badge: "New",
-    category: "clothing" as Category,
-  },
-  {
-    id: "citrus-tote",
-    name: "Citrus Canvas Tote",
-    description: "Durable tote bag for your daily squeeze",
-    price: 22,
-    originalPrice: null,
-    image: "/images/products/tote.png",
-    badge: "New",
-    category: "accessories" as Category,
-  },
-  {
-    id: "spring-hat",
-    name: "Spring Meadow Hat",
-    description: "Protective sun hat with floral details",
-    price: 28,
-    originalPrice: 35,
-    image: "/images/products/hat.png",
-    badge: "Sale",
-    category: "accessories" as Category,
-  },
-  {
-    id: "zest-candle",
-    name: "Lemon Zest Candle",
-    description: "Fresh scented soy candle for a bright mood",
-    price: 18,
-    originalPrice: null,
-    image: "/images/products/candle.png",
-    badge: null,
-    category: "lifestyle" as Category,
-  },
-  {
-    id: "wild-brunch-board",
-    name: "Aesthetic Brunch Board",
-    description: "Bamboo charcuterie set with marble accessories",
-    price: 65,
-    originalPrice: 85,
-    image: "/images/products/toner.jpg",
-    badge: "Bestseller",
-    category: "lifestyle" as Category,
-  },
-  {
-    id: "neon-heart-ink-sheets",
-    name: "Neon Heart Ink Sheets",
-    description: "Bright heart shards for festival-ready layering",
-    price: 14,
-    originalPrice: 19,
-    image: "/images/tattoos/neon-heart-ink-sheets.svg",
-    badge: "New",
-    category: "tattoos" as Category,
-  },
-  {
-    id: "poison-cherry-flame-sheet",
-    name: "Poison Cherry Flame Sheet",
-    description: "Cherry and fire motifs for bold placements",
-    price: 10,
-    originalPrice: 14,
-    image: "/images/tattoos/poison-cherry-flame-sheet.svg",
-    badge: "Sale",
-    category: "tattoos" as Category,
-  },
-  {
-    id: "midnight-script-ink-set",
-    name: "Midnight Script Ink Set",
-    description: "Single-sheet script art for moody looks",
-    price: 5,
-    originalPrice: null,
-    image: "/images/tattoos/midnight-script-ink-set.svg",
-    badge: null,
-    category: "tattoos" as Category,
-  },
-  {
-    id: "rose-glow-mini-ink-pack",
-    name: "Rose Glow Mini Ink Pack",
-    description: "Pink-hued mini tattoos made for romantic layering",
-    price: 7,
-    originalPrice: 12,
-    image: "/images/tattoos/rose-glow-mini-ink-pack.svg",
-    badge: "New",
-    category: "tattoos" as Category,
-  },
-]
-
-const categories: { id: Category; label: string }[] = [
+const categories: { id: ProductCategory; label: string }[] = [
   { id: "clothing", label: "Clothing" },
   { id: "accessories", label: "Accessories" },
   { id: "lifestyle", label: "Lifestyle" },
@@ -132,7 +20,7 @@ const categories: { id: Category; label: string }[] = [
 ]
 
 export function ProductGrid() {
-  const [selectedCategory, setSelectedCategory] = useState<Category>("clothing")
+  const [selectedCategory, setSelectedCategory] = useState<ProductCategory>("clothing")
   const [isVisible, setIsVisible] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [headerVisible, setHeaderVisible] = useState(false)
@@ -146,14 +34,16 @@ export function ProductGrid() {
   useEffect(() => {
     // Show smart recommendation popup after 5 seconds
     const timer = setTimeout(() => {
-      const randomProduct = products[Math.floor(Math.random() * products.length)]
+      const randomProduct = shopProducts[Math.floor(Math.random() * shopProducts.length)]
       setPopupProduct(randomProduct)
       setShowPopup(true)
     }, 5000)
     return () => clearTimeout(timer)
   }, [])
   
-  const filteredProducts = products.filter(product => product.category === selectedCategory)
+  const filteredProducts = shopProducts
+    .filter((product) => product.category === selectedCategory)
+    .slice(0, PRODUCT_DISPLAY_LIMIT)
 
   const sliderIndex = Math.max(
     0,
@@ -162,7 +52,7 @@ export function ProductGrid() {
   const sliderLeft = `calc(${(sliderIndex * 100) / categories.length}% + 2px)`
   const sliderWidth = `calc(${100 / categories.length}% - 4px)`
 
-  const handleCategoryChange = (category: Category) => {
+  const handleCategoryChange = (category: ProductCategory) => {
     if (category !== selectedCategory) {
       setIsTransitioning(true)
       setTimeout(() => {
@@ -176,7 +66,7 @@ export function ProductGrid() {
 
   // Preload all product images on mount
   useEffect(() => {
-    products.forEach((product) => {
+    shopProducts.slice(0, PRODUCT_DISPLAY_LIMIT * categories.length).forEach((product) => {
       const img = new window.Image()
       img.src = product.image
     })
