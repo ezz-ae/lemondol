@@ -119,9 +119,7 @@ export default function AccountChatPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#FEFDF0] flex flex-col">
-      <Header />
-      
+    <div className="min-h-screen bg-[#FEFDF0] flex flex-col">
       <div className="flex-1 pt-24 pb-4 px-4 lg:px-6">
         <div className="flex flex-col gap-6 h-[78vh]">
           

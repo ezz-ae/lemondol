@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { CartProvider } from '@/components/lemon/cart-context'
 import { LemonOrchestrator } from '@/components/lemon/lemon-orchestrator'
 import { BottomNav } from '@/components/lemon/bottom-nav'
+import { Header } from '@/components/lemon/header'
 import { Toaster } from '@/components/ui/toaster'
 import { StructuredData } from '@/components/seo/structured-data'
 import { absoluteUrl, getOrganizationSchema, getWebsiteSchema, siteConfig } from '@/lib/seo'
@@ -115,6 +116,7 @@ export default async function RootLayout({
         <StructuredData data={[getOrganizationSchema(), getWebsiteSchema()]} />
         <div className="w-full max-w-none lg:max-w-[430px] h-[100dvh] lg:h-[calc(100vh-64px)] bg-background shadow-2xl relative flex flex-col lg:my-8 lg:rounded-[3rem] overflow-hidden lg:border-[8px] lg:border-slate-900">
           <CartProvider>
+            <Header />
             <LemonOrchestrator hasNeonData={neonData.available} />
             <main className="flex-1 overflow-y-auto no-scrollbar scroll-smooth">
               {children}

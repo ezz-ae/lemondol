@@ -76,9 +76,7 @@ export default function AIStudioPage() {
   }, [isGeneratingVideo])
 
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
-      
+    <div className="min-h-screen bg-background">
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6 text-center md:text-left">

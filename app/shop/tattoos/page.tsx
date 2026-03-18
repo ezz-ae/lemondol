@@ -96,9 +96,7 @@ export default function TattooCollectionPage() {
         ]}
       />
 
-      <main className="min-h-screen bg-background">
-        <Header />
-
+      <div className="min-h-screen bg-background">
         <section className="relative overflow-hidden bg-slate-950 pb-16 pt-28 text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,122,0,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(244,114,182,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(96,165,250,0.16),transparent_34%)]" />
 

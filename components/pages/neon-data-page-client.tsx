@@ -97,9 +97,7 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
   const highestFilteredPrice = filteredItems.reduce<number>((current, item) => Math.max(current, item.priceValue), 0)
 
   return (
-    <main className="min-h-screen bg-[#050816] text-white">
-      <Header />
-
+    <div className="min-h-screen bg-[#050816] text-white">
       <div className="relative overflow-hidden pb-24 pt-24">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -left-20 top-12 h-56 w-56 rounded-full bg-cyan-400/25 blur-3xl" />

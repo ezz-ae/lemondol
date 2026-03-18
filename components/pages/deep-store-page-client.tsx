@@ -53,9 +53,7 @@ export default function DeepStorePage() {
   const { isAdultMode, setIsAdultMode } = useCart()
 
   return (
-    <main className="min-h-screen bg-white">
-      <Header />
-      
+    <div className="min-h-screen bg-white">
       <div className="pt-32 pb-20 px-6">
         {!isAdultMode ? (
           <div className="max-w-2xl mx-auto text-center space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">

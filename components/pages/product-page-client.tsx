@@ -54,9 +54,7 @@ function ProductPageContent({ product, productId }: { product: CatalogProduct; p
   ]
 
   return (
-    <main className="min-h-screen">
-      <Header />
-      
+    <div className="min-h-screen">
       <div className="pt-28 pb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Back Link */}
