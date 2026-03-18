@@ -5,8 +5,24 @@ import { Header } from "@/components/lemon/header"
 import { Footer } from "@/components/lemon/footer"
 import { Sparkles, Image as ImageIcon, Video, Wand2, Check, RefreshCw, Download, Zap, Wand } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
+import { motion } from "framer-motion"
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
+}
 
 export default function AIStudioPage() {
   const [isEditing, setIsEditing] = useState(false)
@@ -76,10 +92,19 @@ export default function AIStudioPage() {
   }, [isGeneratingVideo])
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6 text-center md:text-left">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background ambient light */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-50" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none opacity-50" />
+
+      <div className="pt-32 pb-20 px-6 relative z-10">
+        <motion.div 
+          className="max-w-6xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div variants={itemVariants} className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6 text-center md:text-left">
             <div>
               <h1 className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-4">
                 AI Creative Studio
@@ -94,11 +119,12 @@ export default function AIStudioPage() {
                 VEO-3 Powered
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Image Auto-Editor */}
-            <Card className="border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-[3rem] overflow-hidden bg-white group hover:shadow-primary/5 transition-all duration-700">
+            <motion.div variants={itemVariants}>
+              <Card className="border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-[3rem] overflow-hidden bg-white group hover:shadow-[0_40px_80px_-20px_rgba(251,191,36,0.15)] transition-all duration-700 h-full flex flex-col">
               <CardHeader className="pb-6 pt-8 px-8">
                 <CardTitle className="text-3xl font-black flex items-center gap-3">
                   <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
@@ -108,8 +134,8 @@ export default function AIStudioPage() {
                 </CardTitle>
                 <CardDescription className="text-lg">Instant studio-quality enhancement for products</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-8 px-8 pb-8">
-                <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-slate-50 border border-slate-100 group-hover:border-primary/20 transition-all">
+              <CardContent className="space-y-8 px-8 pb-8 flex-1 flex flex-col">
+                <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-slate-50 border border-slate-100 group-hover:border-primary/20 transition-all flex-1">
                   {resultImage ? (
                     <div className="absolute inset-0 animate-in fade-in zoom-in-95 duration-1000">
                       <Image 
@@ -143,16 +169,20 @@ export default function AIStudioPage() {
                 <Button 
                   onClick={handleAutoEdit}
                   disabled={isEditing}
-                  className="w-full bg-slate-900 text-white hover:bg-primary hover:text-primary-foreground rounded-full h-16 text-lg font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-95"
+                  className={`w-full text-white rounded-full h-16 text-lg font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-95 ${
+                    isEditing ? 'bg-primary cursor-not-allowed opacity-90' : 'bg-slate-900 hover:bg-primary hover:text-primary-foreground'
+                  }`}
                 >
                   {isEditing ? <RefreshCw className="mr-3 h-6 w-6 animate-spin" /> : <Wand2 className="mr-3 h-6 w-6" />}
                   {isEditing ? "Enhancing..." : "Auto-Enhance Photo"}
                 </Button>
               </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
 
             {/* Veo Video Generator */}
-            <Card className="border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-[3rem] overflow-hidden bg-white group hover:shadow-secondary/5 transition-all duration-700">
+            <motion.div variants={itemVariants}>
+              <Card className="border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] rounded-[3rem] overflow-hidden bg-white group hover:shadow-[0_40px_80px_-20px_rgba(244,114,182,0.15)] transition-all duration-700 h-full flex flex-col">
               <CardHeader className="pb-6 pt-8 px-8">
                 <CardTitle className="text-3xl font-black flex items-center gap-3">
                   <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center">
@@ -162,8 +192,8 @@ export default function AIStudioPage() {
                 </CardTitle>
                 <CardDescription className="text-lg">Cinematic 4K motion powered by Google Veo 3</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-8 px-8 pb-8">
-                <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-slate-50 border border-slate-100 group-hover:border-secondary/20 transition-all">
+              <CardContent className="space-y-8 px-8 pb-8 flex-1 flex flex-col">
+                <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-slate-50 border border-slate-100 group-hover:border-secondary/20 transition-all flex-1">
                   {resultVideo ? (
                     <video
                       autoPlay
@@ -195,17 +225,20 @@ export default function AIStudioPage() {
                 <Button 
                   onClick={handleGenerateVideo}
                   disabled={isGeneratingVideo}
-                  className="w-full bg-secondary text-secondary-foreground hover:bg-slate-900 hover:text-white rounded-full h-16 text-lg font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-95"
+                  className={`w-full text-white rounded-full h-16 text-lg font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-95 ${
+                    isGeneratingVideo ? 'bg-secondary cursor-not-allowed opacity-90' : 'bg-slate-900 hover:bg-secondary hover:text-secondary-foreground'
+                  }`}
                 >
                   {isGeneratingVideo ? <RefreshCw className="mr-3 h-6 w-6 animate-spin" /> : <Sparkles className="mr-3 h-6 w-6" />}
                   {isGeneratingVideo ? "Generating Cinema..." : "Synthesize 4K Motion"}
                 </Button>
               </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
           </div>
 
           {/* Quick Tools */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <motion.div variants={itemVariants} className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
              {[
                { icon: Wand, label: "Smart Retouch" },
                { icon: RefreshCw, label: "Style Swap" },
@@ -217,11 +250,11 @@ export default function AIStudioPage() {
                  <span className="text-xs font-bold uppercase tracking-widest">{tool.label}</span>
                </Button>
              ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       <Footer />
-    </main>
+    </div>
   )
 }

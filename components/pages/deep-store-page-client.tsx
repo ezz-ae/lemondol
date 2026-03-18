@@ -237,6 +237,6 @@ export default function DeepStorePage() {
       `}} />
       
       <Footer />
-    </main>
+    </div>
   )
 }

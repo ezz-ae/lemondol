@@ -123,13 +123,14 @@ export function Testimonials() {
       { threshold: 0.1 }
     )
 
-    if (headerRef.current) {
-      observer.observe(headerRef.current)
+    const currentRef = headerRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (headerRef.current) {
-        observer.unobserve(headerRef.current)
+      if (currentRef) {
+        observer.unobserve(currentRef)
       }
     }
   }, [])

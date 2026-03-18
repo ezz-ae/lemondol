@@ -239,6 +239,6 @@ function ProductPageContent({ product, productId }: { product: CatalogProduct; p
       </div>
 
       <Footer />
-    </main>
+    </div>
   )
 }

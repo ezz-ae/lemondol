@@ -420,7 +420,7 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
                               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                                 <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">Objective</div>
                                 <p className="text-sm text-white/90 leading-relaxed font-medium italic">
-                                  "{generateBriefForNeonItem(item).objective}"
+                                  &quot;{generateBriefForNeonItem(item).objective}&quot;
                                 </p>
                               </div>
 
@@ -511,6 +511,6 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
           </section>
         </div>
       </div>
-    </main>
+    </div>
   )
 }

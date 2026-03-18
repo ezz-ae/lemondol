@@ -31,17 +31,21 @@ export default function HomePage() {
           path: "/",
         })}
       />
-      <div className="space-y-0">
-        <Hero />
-        <TrustBadges />
-        <ProductGrid />
-        <TattooSpotlight />
-        <FullPageSlider />
-        <FeatureSection />
-        <Testimonials />
-        <CTABanner />
-        <Newsletter />
-        <Footer />
+      <div className="bg-slate-50 text-slate-900">
+        <div className="space-y-0">
+          <Hero />
+          <div className="mx-auto max-w-5xl space-y-16 px-4 py-10 sm:px-6">
+            <TrustBadges />
+            <ProductGrid />
+            <TattooSpotlight />
+            <FullPageSlider />
+            <FeatureSection />
+            <Testimonials />
+            <CTABanner />
+            <Newsletter />
+            <Footer />
+          </div>
+        </div>
       </div>
     </>
   )

@@ -318,7 +318,7 @@ export default function TattooCollectionPage() {
         </section>
 
         <Footer />
-      </main>
+      </div>
     </>
   )
 }

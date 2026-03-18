@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Sparkles, Zap } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -60,10 +61,11 @@ export function FullPageSlider() {
             {slides.map((slide, index) => (
               <CarouselItem key={index} className="pl-0 h-full relative">
                 <div className="absolute inset-0">
-                  <img 
+                  <Image 
                     src={slide.image} 
                     alt={slide.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 </div>

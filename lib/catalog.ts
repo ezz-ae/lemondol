@@ -43,7 +43,7 @@ const tattooDelivery =
 
 const tattooImage = (slug: string) => `/images/tattoos/${slug}.svg`
 
-export const catalogProducts: CatalogProduct[] = [
+const curatedCatalogProducts: CatalogProduct[] = [
   {
     id: "lemon-dress",
     name: "Sunshine Lemon Dress",
@@ -652,6 +652,234 @@ export const catalogProducts: CatalogProduct[] = [
     ingredients: "Lead-free crystal glass with organic yellow pigment.",
     delivery: standardDelivery,
   },
+]
+
+const TOTAL_CATALOG_PRODUCTS = 1000
+
+const extraAdjectives = [
+  "Luminous",
+  "Velvet",
+  "Daydream",
+  "Auburn",
+  "Iridescent",
+  "Sculpted",
+  "Opaline",
+  "Sunlit",
+  "Dusky",
+  "Glacial",
+  "Rich",
+  "Serene",
+]
+
+const taglineTemplates: Record<ProductCategory, string> = {
+  clothing: "{adjective} tailoring with effortless movement",
+  accessories: "{adjective} accents to polish any outfit",
+  lifestyle: "{adjective} essentials for luminous rituals",
+  tattoos: "{adjective} ink that reads like a statement",
+}
+
+const categoryFocus: Record<ProductCategory, string> = {
+  clothing: "clothing piece",
+  accessories: "accessory accent",
+  lifestyle: "lifestyle essential",
+  tattoos: "temporary ink story",
+}
+
+const descriptionVerbs: Record<ProductCategory, string[]> = {
+  clothing: [
+    "cinch into bold silhouettes without sacrificing comfort",
+    "blend sculpted tailoring with slow-draped ease",
+    "move effortlessly across days built for minimal fuss",
+  ],
+  accessories: [
+    "finish every outfit with polished hardware and tactile textures",
+    "keep essentials within easy reach with refined lines",
+    "introduce subtle contrast while staying weightless",
+  ],
+  lifestyle: [
+    "turn quiet routines into celebratory rituals",
+    "anchor your day with calm yet confident energy",
+    "animate shared moments with thoughtful finishes",
+  ],
+  tattoos: [
+    "land as studio-grade statement art without the commitment",
+    "accent skin with high-contrast detail that photographs cleanly",
+    "layer with glossy fabrics or matte accessories while still feeling removable",
+  ],
+}
+
+const detailNotes: Record<ProductCategory, string[]> = {
+  clothing: [
+    "Tailored darts keep the silhouette clean while letting layers peek through.",
+    "Soft stretch panels trace the body for a flattering, modern drape.",
+    "Precision seams map to your shape so this piece layers easily under jackets.",
+  ],
+  accessories: [
+    "Minimal hardware and brushed finishes keep the look refined and travel-ready.",
+    "Structured stitching and hidden pockets stay smooth even under a shoulder strap.",
+    "Textural woven surfaces add depth while remaining weightless in wear.",
+  ],
+  lifestyle: [
+    "Hand-finishing brings a quiet luxe sheen to every surface.",
+    "Cozy, tactile materials invite slow mornings and curated gatherings.",
+    "Balanced proportions make this roster-ready for any ritual you rehearse.",
+  ],
+  tattoos: [
+    "Micro-details and bold lines make this feel like professional studio ink.",
+    "Layer-friendly placements keep the look versatile across digits and limbs.",
+    "A matte finish keeps the art crisp under flash photography.",
+  ],
+}
+
+const howToUseNotes: Record<ProductCategory, string[]> = {
+  clothing: [
+    "Machine wash cold, tumble dry low, and reshape while damp.",
+    "Turn inside out before washing to preserve surface textures.",
+    "Use a gentle cycle and hang dry to keep the structure sharp.",
+  ],
+  accessories: [
+    "Wipe clean with a damp cloth and allow to air dry.",
+    "Store flat in the dust bag and keep away from heavy moisture.",
+    "Rotate between uses to preserve the hardware sheen.",
+  ],
+  lifestyle: [
+    "Hand wash gently, then air dry on a cloth to keep the finish calm.",
+    "Spot clean spills immediately with mild soap.",
+    "Treat with a light polish every few uses for a luminous patina.",
+  ],
+  tattoos: [
+    "Press onto clean skin with water for at least 30 seconds.",
+    "Avoid lotions for the first hour after application.",
+    "Remove with cleansing oil or micellar water when you want a clean slate.",
+  ],
+}
+
+const ingredientNotes: Record<ProductCategory, string[]> = {
+  clothing: [
+    "Recycled cotton, modal, and stretch elastane for effortless movement.",
+    "Organic cotton with a soft-tech elastane core for drape and coverage.",
+    "Micro-rib knit with linen-inspired fibers for breathing structure.",
+  ],
+  accessories: [
+    "Italian nylon webbing with brushed stainless accents.",
+    "Cotton canvas with vegan leather trims and subtle hardware.",
+    "Lightweight recycled polymers balanced with chrome-dipped clasps.",
+  ],
+  lifestyle: [
+    "Sustainable bamboo, porcelain, and brushed brass details.",
+    "Hand-blown glass, natural cork, and cold-pressed oils.",
+    "Recycled ceramic, organic cotton, and plant-based waxes.",
+  ],
+  tattoos: [
+    "Cosmetic-grade pigment, breathable film, and protective seal.",
+    "Water-transfer ink, adhesive layer, and medicated backing.",
+    "Skin-safe polymer film with shimmer-free pigment panels.",
+  ],
+}
+
+const categoryNameSuffix: Record<ProductCategory, string> = {
+  clothing: "Loom",
+  accessories: "Signal",
+  lifestyle: "Studio",
+  tattoos: "Ink",
+}
+
+const categorySizesMap: Record<ProductCategory, string[]> = {
+  clothing: ["XS", "S", "M", "L", "XL"],
+  accessories: ["One Size"],
+  lifestyle: ["Standard"],
+  tattoos: ["1 Sheet"],
+}
+
+const categoryPriceBase: Record<ProductCategory, number> = {
+  clothing: 42,
+  accessories: 32,
+  lifestyle: 28,
+  tattoos: 9,
+}
+
+const categoryImagePool: Record<ProductCategory, string[]> = {
+  clothing: [
+    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=80",
+  ],
+  accessories: [
+    "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80",
+  ],
+  lifestyle: [
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1507764923503-6ccfcf45d0b8?auto=format&fit=crop&w=900&q=80",
+  ],
+  tattoos: [
+    "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1475180098004-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
+  ],
+}
+
+function badgeForVariant(index: number): ProductBadge {
+  const cadence = (index + 2) % 13
+  if (cadence === 0) return "Bestseller"
+  if (cadence === 3) return "Sale"
+  if (cadence === 6) return "New"
+  if (cadence === 9) return "Girls' Choice"
+  if (cadence === 11) return "Wild"
+  return null
+}
+
+function generatePerfectlySelectedProducts(startIndex: number, count: number): CatalogProduct[] {
+  if (count <= 0) {
+    return []
+  }
+
+  return Array.from({ length: count }, (_, offset) => {
+    const variantIndex = startIndex + offset
+    const category = productCategories[variantIndex % productCategories.length]
+    const adjective = extraAdjectives[variantIndex % extraAdjectives.length]
+    const suffix = categoryNameSuffix[category]
+    const name = `${adjective} ${suffix} ${variantIndex.toString().padStart(4, "0")}`
+    const tagline = taglineTemplates[category].replace("{adjective}", adjective)
+    const focus = categoryFocus[category]
+    const article = /^[AEIOU]/i.test(adjective) ? "An" : "A"
+    const descriptionVerb = descriptionVerbs[category][variantIndex % descriptionVerbs[category].length]
+    const description = `${article} ${adjective.toLowerCase()} ${focus} designed to ${descriptionVerb}.`
+    const price =
+      Math.round(categoryPriceBase[category] + ((variantIndex + 1) % 6) * 4 + (category === "accessories" ? 2 : 0))
+    const originalPrice = (variantIndex + 1) % 3 === 0 ? null : price + 7 + ((variantIndex + 2) % 4) * 2
+    const detailsList = detailNotes[category]
+    const howToUseList = howToUseNotes[category]
+    const ingredientList = ingredientNotes[category]
+    const imageList = categoryImagePool[category]
+
+    return {
+      id: `lemondol-batch-${variantIndex.toString().padStart(4, "0")}`,
+      name,
+      tagline,
+      description,
+      price,
+      originalPrice,
+      image: imageList[variantIndex % imageList.length],
+      badge: badgeForVariant(variantIndex),
+      category,
+      sizes: categorySizesMap[category],
+      details: detailsList[variantIndex % detailsList.length],
+      howToUse: howToUseList[variantIndex % howToUseList.length],
+      ingredients: ingredientList[variantIndex % ingredientList.length],
+      delivery: category === "tattoos" ? tattooDelivery : standardDelivery,
+    }
+  })
+}
+
+const curatedCatalogProductsCount = curatedCatalogProducts.length
+const extraProductCount = Math.max(0, TOTAL_CATALOG_PRODUCTS - curatedCatalogProductsCount)
+
+export const catalogProducts: CatalogProduct[] = [
+  ...curatedCatalogProducts,
+  ...generatePerfectlySelectedProducts(curatedCatalogProductsCount + 1, extraProductCount),
 ]
 
 export const shopProducts = catalogProducts.map(({ id, name, description, price, originalPrice, image, badge, category }) => ({

@@ -231,7 +231,7 @@ export default function ShopPage() {
       default:
         return [`${shopProducts.length} curated products`, "4 product categories", "Skirts, gear, and ink"]
     }
-  }, [categoryProducts.length, selectedCategory])
+  }, [selectedCategory, categoryProducts.length, filteredProducts.length])
 
   const collectionHero = collectionCopy[selectedCategory]
   const HeroIcon =
@@ -248,13 +248,15 @@ export default function ShopPage() {
       { threshold: 0.1 },
     )
 
-    if (gridRef.current) {
-      observer.observe(gridRef.current)
+    const currentGridRef = gridRef.current
+
+    if (currentGridRef) {
+      observer.observe(currentGridRef)
     }
 
     return () => {
-      if (gridRef.current) {
-        observer.unobserve(gridRef.current)
+      if (currentGridRef) {
+        observer.unobserve(currentGridRef)
       }
     }
   }, [])
@@ -549,7 +551,7 @@ export default function ShopPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">No matches</p>
               <h3 className="mt-3 font-serif text-3xl text-foreground">No products match that search yet</h3>
               <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
-                Try a broader term like "tattoo", "skirt", or "tripod", or reset the current filters to jump back into the full collection.
+                Try a broader term like &quot;tattoo&quot;, &quot;skirt&quot;, or &quot;tripod&quot;, or reset the current filters to jump back into the full collection.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <button
@@ -581,7 +583,7 @@ export default function ShopPage() {
       </div>
 
       <Footer />
-    </main>
+    </div>
   )
 }
 

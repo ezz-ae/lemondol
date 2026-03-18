@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { Utensils, MapPin, Star, Heart, Sparkles, Filter, ChevronRight, Search, Users, Camera } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -89,12 +90,14 @@ export default function GirlsTimePageClient() {
               filteredSpots.map((spot) => (
                 <Card key={spot.id} className="overflow-hidden rounded-[2.5rem] border-none shadow-lg group">
                   <div className="relative aspect-[16/10]">
-                    <img 
-                      src={spot.image} 
+                    <Image
+                      src={spot.image}
                       alt={spot.name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop"
+                        ;(e.target as HTMLImageElement).src =
+                          "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop"
                       }}
                     />
                     <div className="absolute top-4 right-4">
@@ -174,7 +177,7 @@ export default function GirlsTimePageClient() {
               <Sparkles className="w-8 h-8 mb-4 opacity-50" />
               <h2 className="text-2xl font-black mb-2 leading-tight uppercase tracking-tight">Plan the Vibe</h2>
               <p className="text-sm font-medium mb-6 opacity-90">
-                Co-create the ultimate girls' day. Shared maps, moodboards, and live availability.
+                Co-create the ultimate girls&apos; day. Shared maps, moodboards, and live availability.
               </p>
               <Button 
                 className="rounded-full bg-white text-slate-900 font-black text-xs uppercase tracking-widest px-8 hover:bg-slate-50"

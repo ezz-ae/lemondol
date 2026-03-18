@@ -262,7 +262,7 @@ export default function AccountChatPage() {
       </div>
 
       <Footer />
-    </main>
+    </div>
   )
 }
 
