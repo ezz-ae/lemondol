@@ -11,7 +11,9 @@ type ProductPageProps = {
 }
 
 export async function generateStaticParams() {
-  return catalogProducts.map((product) => ({ id: product.id }))
+  // Only pre-render the first 25 products to save build time/space in this environment.
+  // The rest will be generated on-demand.
+  return catalogProducts.slice(0, 25).map((product) => ({ id: product.id }))
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
