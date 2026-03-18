@@ -1,13 +1,13 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ArrowRight, Camera, Droplets, ShoppingBag, Shirt, SlidersHorizontal, Sparkles, X } from "lucide-react"
 
 import { Footer } from "@/components/lemon/footer"
 import { Header } from "@/components/lemon/header"
+import { ProductVisual } from "@/components/catalog/product-visual"
 import { isShopCategory, shopCategories, shopCategoryLabels, shopProducts, type ShopCategory } from "@/lib/catalog"
 
 type ShopSort = "featured" | "price-low" | "price-high" | "name-az"
@@ -28,21 +28,21 @@ const collectionCopy: Record<ShopCategory, { eyebrow: string; title: string; des
     eyebrow: "Curated Drops",
     title: "Fresh looks, creator gear, and one-time ink",
     description: "Browse the full mix of skirts, corsets, creator tools, and one-time tattoos built to work as complete looks instead of isolated products.",
-    ctaHref: "/shop?category=tattoos",
+    ctaHref: "/shop/tattoos",
     ctaLabel: "See tattoo collection",
   },
   clothing: {
     eyebrow: "Style Layers",
     title: "Skirts, lace, and corset-led looks",
     description: "The clothing edit now leans harder into pleated minis, lace layers, and after-dark tops that match the tattoo drop.",
-    ctaHref: "/shop?category=tattoos",
+    ctaHref: "/shop/tattoos",
     ctaLabel: "Pair with tattoos",
   },
   accessories: {
     eyebrow: "Creator Tools",
     title: "Accessories that finish the content-ready look",
     description: "From everyday carry pieces to smart tripods, the accessories lineup helps turn styling ideas into full creator setups.",
-    ctaHref: "/shop?category=tattoos",
+    ctaHref: "/shop/tattoos",
     ctaLabel: "See the ink edit",
   },
   lifestyle: {
@@ -53,13 +53,30 @@ const collectionCopy: Record<ShopCategory, { eyebrow: string; title: string; des
     ctaLabel: "Browse full catalog",
   },
   tattoos: {
-    eyebrow: "One-Time Tattoos",
-    title: "Water-transfer drops for quick look changes",
-    description: "These one-time tattoos are built for festival fits, photo shoots, and after-dark styling, with easy oil removal and fast application.",
+    eyebrow: "Wild Ink Collection",
+    title: "Generated body-art drops with after-dark energy",
+    description: "A sharper one-time tattoo collection with chrome stars, thorned hearts, chain motifs, and long-stem florals designed for instant outfit drama.",
     ctaHref: "/shop",
     ctaLabel: "Back to all products",
   },
 }
+
+const tattooHeroProductIds = ["chrome-siren-star-sheet", "poison-cherry-flame-sheet", "electric-halo-spine-sheet"]
+
+const tattooThemeNotes = [
+  {
+    title: "Chrome Siren",
+    description: "Mirror-bright stars and metallic energy for flash-heavy night looks.",
+  },
+  {
+    title: "Poison Cherry",
+    description: "Cherry-fire motifs that push the collection into glossier, hotter night-out territory.",
+  },
+  {
+    title: "Electric Halo",
+    description: "Long halo-and-bolt placements that give the body art a luminous, directional feel.",
+  },
+]
 
 export default function ShopPage() {
   const router = useRouter()
@@ -185,7 +202,17 @@ export default function ShopPage() {
 
   const heroProducts = useMemo(() => {
     if (selectedCategory === "all") {
-      return shopProducts.filter((product) => ["nightfall-corset-top", "orbit-tracking-tripod", "neon-heart-ink-sheets"].includes(product.id))
+      return ["nightfall-corset-top", "orbit-tracking-tripod", "poison-cherry-flame-sheet"].flatMap((id) => {
+        const product = shopProducts.find((item) => item.id === id)
+        return product ? [product] : []
+      })
+    }
+
+    if (selectedCategory === "tattoos") {
+      return tattooHeroProductIds.flatMap((id) => {
+        const product = filteredProducts.find((item) => item.id === id)
+        return product ? [product] : []
+      })
     }
 
     return filteredProducts.slice(0, 3)
@@ -200,7 +227,7 @@ export default function ShopPage() {
       case "lifestyle":
         return [`${filteredProducts.length} cozy picks`, "Giftable details", "Desk + room glow"]
       case "tattoos":
-        return [`${categoryProducts.length} tattoo drops`, "Water-transfer finish", "Removes with oil"]
+        return [`${categoryProducts.length} wild tattoo drops`, "Generated editorial art", "Removes with cleansing oil"]
       default:
         return [`${shopProducts.length} curated products`, "4 product categories", "Skirts, gear, and ink"]
     }
@@ -269,7 +296,7 @@ export default function ShopPage() {
                 <h2 className="mt-5 max-w-2xl font-serif text-3xl leading-tight md:text-4xl">{collectionHero.title}</h2>
                 <p className={`mt-4 max-w-2xl text-sm leading-7 md:text-base ${isTattooCollection ? "text-white/70" : "text-muted-foreground"}`}>
                   {selectedCategory === "tattoos"
-                    ? "Use the tattoo drop to add instant detail to festival fits, creator shoots, and after-dark outfits — then layer it with the skirts, corsets, and gear already in the collection."
+                    ? "Use the tattoo drop to add glossy editorial energy to festival fits, creator shoots, and after-dark outfits, then layer it with skirts, corsets, and chrome-ready accessories."
                     : "Use this collection to build complete looks faster, then mix in the tattoo category whenever you want quick visual edge without a long-term commitment."}
                 </p>
 
@@ -285,6 +312,18 @@ export default function ShopPage() {
                     </span>
                   ))}
                 </div>
+
+                {isTattooCollection ? (
+                  <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                    {tattooThemeNotes.map((note) => (
+                      <div key={note.title} className="rounded-[1.5rem] border border-white/10 bg-white/6 p-4">
+                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/45">Tattoo theme</p>
+                        <h3 className="mt-2 font-serif text-xl text-white">{note.title}</h3>
+                        <p className="mt-2 text-sm leading-6 text-white/68">{note.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
 
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
@@ -320,7 +359,14 @@ export default function ShopPage() {
                     }`}
                   >
                     <div className="relative aspect-[4/5] overflow-hidden bg-muted">
-                      <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
+                      <ProductVisual
+                        name={product.name}
+                        image={product.image}
+                        category={product.category}
+                        badge={product.badge}
+                        variant="hero"
+                        sizes="(max-width: 1024px) 33vw, 220px"
+                      />
                     </div>
                     <div className="p-4">
                       <p className={`mb-2 text-[10px] font-bold uppercase tracking-[0.3em] ${isTattooCollection ? "text-white/45" : "text-muted-foreground"}`}>
@@ -550,8 +596,6 @@ function ProductCard({
   index: number
   isVisible: boolean
 }) {
-  const [imageLoaded, setImageLoaded] = useState(false)
-
   return (
     <Link
       href={`/product/${product.id}`}
@@ -560,20 +604,13 @@ function ProductCard({
     >
       <div className="bg-card rounded-3xl overflow-hidden lemon-shadow lemon-transition group-hover:scale-[1.02]">
         <div className="relative aspect-square bg-muted overflow-hidden">
-          <div
-            className={`absolute inset-0 bg-gradient-to-br from-muted via-muted/50 to-muted animate-pulse transition-opacity duration-500 ${
-              imageLoaded ? "opacity-0" : "opacity-100"
-            }`}
-          />
-
-          <Image
-            src={product.image || "/placeholder.svg"}
-            alt={product.name}
-            fill
-            className={`object-cover lemon-transition group-hover:scale-105 transition-opacity duration-500 ${
-              imageLoaded ? "opacity-100" : "opacity-0"
-            }`}
-            onLoad={() => setImageLoaded(true)}
+          <ProductVisual
+            name={product.name}
+            image={product.image}
+            category={product.category}
+            badge={product.badge}
+            sizes="(max-width: 768px) 100vw, 33vw"
+            imageClassName="lemon-transition group-hover:scale-105"
           />
 
           {product.badge && (

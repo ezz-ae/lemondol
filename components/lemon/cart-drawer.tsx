@@ -1,7 +1,6 @@
 "use client"
 
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
-import Image from "next/image"
 import {
   Drawer,
   DrawerClose,
@@ -11,6 +10,8 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer"
+import { ProductVisual } from "@/components/catalog/product-visual"
+import { getProductById } from "@/lib/catalog"
 import { useCart } from "./cart-context"
 
 export function CartDrawer() {
@@ -49,11 +50,13 @@ export function CartDrawer() {
                 <div key={item.id} className="flex gap-4">
                   {/* Product Image */}
                   <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
-                    <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
-                      fill
-                      className="object-cover"
+                    <ProductVisual
+                      name={item.name}
+                      image={item.image}
+                      category={getProductById(item.id)?.category ?? "accessories"}
+                      badge={getProductById(item.id)?.badge ?? null}
+                      variant="thumb"
+                      sizes="96px"
                     />
                   </div>
 

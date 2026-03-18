@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, BarChart3, Boxes, Database, Search, Sparkles, TrendingUp, Zap } from "lucide-react"
+import { ArrowUpRight, BarChart3, Boxes, Database, Search, Sparkles, TrendingUp, Zap, Wand2, Eye, CheckCircle2 } from "lucide-react"
 
 import { Header } from "@/components/lemon/header"
 import { Badge } from "@/components/ui/badge"
@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 import type { NeonDataItem, NeonDataPayload, NeonSource } from "@/lib/neon-data"
+import { generateBriefForNeonItem } from "@/lib/image-recreation"
 
 type SourceFilter = "all" | NeonSource
 
@@ -81,6 +82,7 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
   const [sourceFilter, setSourceFilter] = useState<SourceFilter>("all")
   const [queryFilter, setQueryFilter] = useState("all")
   const [visibleCount, setVisibleCount] = useState(18)
+  const [perfectingId, setPerfectingId] = useState<string | null>(null)
 
   const filteredItems = useMemo(
     () => filterItems(data.items, sourceFilter, queryFilter, searchTerm),
@@ -143,6 +145,22 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
               </div>
             </div>
           </section>
+
+          {data.mode === "demo" && (
+            <section className="rounded-[2rem] border border-cyan-300/20 bg-cyan-400/10 p-5 text-sm text-cyan-100 shadow-[0_0_30px_rgba(34,211,238,0.12)]">
+              <div className="font-semibold uppercase tracking-[0.28em] text-cyan-200">Demo market data</div>
+              <p className="mt-2 leading-6 text-cyan-50/80">
+                {data.message ?? "Live CSV exports were not found, so this dashboard is using bundled demo data."}
+              </p>
+            </section>
+          )}
+
+          {data.mode === "partial" && data.message && (
+            <section className="rounded-[2rem] border border-fuchsia-300/20 bg-fuchsia-400/10 p-5 text-sm text-fuchsia-100 shadow-[0_0_30px_rgba(217,70,239,0.12)]">
+              <div className="font-semibold uppercase tracking-[0.28em] text-fuchsia-200">Partial live data</div>
+              <p className="mt-2 leading-6 text-fuchsia-50/80">{data.message}</p>
+            </section>
+          )}
 
           {!data.available && (
             <section className="rounded-[2rem] border border-amber-300/20 bg-amber-500/10 p-5 text-sm text-amber-100 shadow-[0_0_30px_rgba(251,191,36,0.12)]">
@@ -344,17 +362,102 @@ export default function NeonDataPageClient({ data }: { data: NeonDataPayload }) 
                                 }
                           }
                         />
-                        <Button
-                          asChild
-                          className="h-11 rounded-2xl bg-white text-slate-950 hover:bg-cyan-200"
-                        >
-                          <a href={item.productUrl} target="_blank" rel="noreferrer">
-                            Open
-                            <ArrowUpRight className="h-4 w-4" />
-                          </a>
-                        </Button>
+                        <div className="flex flex-col gap-2">
+                          <Button
+                            asChild
+                            className="h-11 rounded-2xl bg-white text-slate-950 hover:bg-cyan-200"
+                          >
+                            <a href={item.productUrl} target="_blank" rel="noreferrer">
+                              Open
+                              <ArrowUpRight className="h-4 w-4 ml-1" />
+                            </a>
+                          </Button>
+                          <Button
+                            onClick={() => setPerfectingId(perfectingId === item.id ? null : item.id)}
+                            className={cn(
+                              "h-11 rounded-2xl transition-all",
+                              perfectingId === item.id 
+                                ? "bg-fuchsia-500 text-white shadow-[0_0_15px_rgba(217,70,239,0.4)]" 
+                                : "bg-white/10 text-white hover:bg-white/20 border border-white/10"
+                            )}
+                          >
+                            <Wand2 className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </div>
                     </div>
+
+                    {perfectingId === item.id && (
+                      <div className="border-t border-white/10 bg-black/40 p-6 animate-in fade-in slide-in-from-top-2 duration-300">
+                        <div className="flex flex-col gap-8 md:flex-row">
+                          <div className="space-y-6 md:w-2/3">
+                            <div className="flex items-center gap-2">
+                              <Sparkles className="h-5 w-5 text-cyan-300" />
+                              <h4 className="text-sm font-black uppercase tracking-[0.3em] text-cyan-100">AI Luxury Recreation Brief</h4>
+                              <Badge className="bg-cyan-400/10 text-cyan-300 border-cyan-400/20 text-[10px] uppercase font-bold px-2 py-0">Approved</Badge>
+                            </div>
+                            
+                            <div className="space-y-4">
+                              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">Objective</div>
+                                <p className="text-sm text-white/90 leading-relaxed font-medium italic">
+                                  "{generateBriefForNeonItem(item).objective}"
+                                </p>
+                              </div>
+
+                              <div className="grid gap-4 sm:grid-cols-2">
+                                <div className="space-y-2">
+                                  <div className="text-[10px] font-bold uppercase tracking-widest text-white/40">Fidelity: Must Keep</div>
+                                  <ul className="space-y-1">
+                                    {generateBriefForNeonItem(item).fidelity.mustKeep.map((point, i) => (
+                                      <li key={i} className="flex items-start gap-2 text-[11px] text-white/60">
+                                        <CheckCircle2 className="h-3 w-3 mt-0.5 text-cyan-400 flex-shrink-0" />
+                                        <span>{point}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div className="space-y-2">
+                                  <div className="text-[10px] font-bold uppercase tracking-widest text-white/40">Elevation: Can Change</div>
+                                  <ul className="space-y-1">
+                                    {generateBriefForNeonItem(item).fidelity.canChange.map((point, i) => (
+                                      <li key={i} className="flex items-start gap-2 text-[11px] text-white/60">
+                                        <Sparkles className="h-3 w-3 mt-0.5 text-fuchsia-400 flex-shrink-0" />
+                                        <span>{point}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="space-y-6 md:w-1/3 border-l border-white/10 pl-0 md:pl-8 pt-6 md:pt-0">
+                            <div className="space-y-4">
+                              <div className="text-[10px] font-bold uppercase tracking-widest text-white/40">Output Targets</div>
+                              <div className="space-y-3">
+                                {generateBriefForNeonItem(item).outputs.map((output) => (
+                                  <div key={output.id} className="rounded-xl border border-white/10 bg-white/5 p-3">
+                                    <div className="flex items-center justify-between mb-2">
+                                      <Badge className="bg-white/10 text-white border-none text-[8px] font-black uppercase tracking-tighter">
+                                        {output.providerTarget} · {output.mode}
+                                      </Badge>
+                                      <span className="text-[10px] text-white/30 font-medium">{output.aspectRatio}</span>
+                                    </div>
+                                    <div className="text-xs font-bold text-white mb-1 uppercase tracking-tight">{output.useCase.replace('-', ' ')}</div>
+                                    <p className="text-[10px] leading-relaxed text-white/50">{output.framing}</p>
+                                  </div>
+                                ))}
+                              </div>
+                              <Button className="w-full h-10 rounded-xl bg-cyan-400/20 text-cyan-300 border border-cyan-400/30 hover:bg-cyan-400/30 text-[10px] font-black uppercase tracking-widest">
+                                <Zap className="h-3 w-3 mr-2" />
+                                Run Generator
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>

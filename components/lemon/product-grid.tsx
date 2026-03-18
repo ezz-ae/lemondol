@@ -1,13 +1,13 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { Heart, Ruler, ShoppingBag, Sparkles, X } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { ProductVisual } from "@/components/catalog/product-visual"
 import { productCategories, shopCategoryLabels, shopProducts, type ProductCategory } from "@/lib/catalog"
 import { useCart } from "./cart-context"
 
@@ -16,12 +16,16 @@ const categories = productCategories.map((category) => ({
   label: shopCategoryLabels[category],
 }))
 
+const suggestionDismissKey = "lemondol-home-suggestion-dismissed"
+
 export function ProductGrid() {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>("clothing")
   const [isVisible, setIsVisible] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [headerVisible, setHeaderVisible] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
+  const [hasShownPopup, setHasShownPopup] = useState(false)
+  const [hasDismissedPopup, setHasDismissedPopup] = useState(false)
   const [popupProduct, setPopupProduct] = useState<(typeof shopProducts)[number] | null>(null)
 
   const gridRef = useRef<HTMLDivElement>(null)
@@ -32,14 +36,51 @@ export function ProductGrid() {
   const filteredProducts = shopProducts.filter((product) => product.category === selectedCategory).slice(0, 4)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const randomProduct = shopProducts[Math.floor(Math.random() * shopProducts.length)]
-      setPopupProduct(randomProduct)
-      setShowPopup(true)
-    }, 5000)
+    if (typeof window === "undefined") {
+      return
+    }
 
-    return () => clearTimeout(timer)
+    setHasDismissedPopup(window.sessionStorage.getItem(suggestionDismissKey) === "true")
   }, [])
+
+  useEffect(() => {
+    if (!isVisible || hasShownPopup || hasDismissedPopup) {
+      return
+    }
+
+    const timer = window.setTimeout(() => {
+      const suggestionPool = filteredProducts.length > 0 ? filteredProducts : shopProducts
+      const suggestion = suggestionPool[Math.floor(Math.random() * suggestionPool.length)]
+      setPopupProduct(suggestion)
+      setShowPopup(true)
+      setHasShownPopup(true)
+    }, 1800)
+
+    return () => window.clearTimeout(timer)
+  }, [filteredProducts, hasDismissedPopup, hasShownPopup, isVisible])
+
+  useEffect(() => {
+    if (!showPopup) {
+      return
+    }
+
+    const timer = window.setTimeout(() => {
+      setShowPopup(false)
+    }, 7500)
+
+    return () => window.clearTimeout(timer)
+  }, [showPopup])
+
+  const dismissPopup = (persist = true) => {
+    setShowPopup(false)
+
+    if (!persist || typeof window === "undefined") {
+      return
+    }
+
+    window.sessionStorage.setItem(suggestionDismissKey, "true")
+    setHasDismissedPopup(true)
+  }
 
   const handleCategoryChange = (category: ProductCategory) => {
     if (category !== selectedCategory) {
@@ -177,7 +218,14 @@ export function ProductGrid() {
 
               <div className="bg-white rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] lemon-transition group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] group-hover:-translate-y-2 relative z-10">
                 <Link href={`/product/${product.id}`} className="relative aspect-square bg-muted overflow-hidden block">
-                  <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover lemon-transition group-hover:scale-105" />
+                  <ProductVisual
+                    name={product.name}
+                    image={product.image}
+                    category={product.category}
+                    badge={product.badge}
+                    sizes="(max-width: 768px) 90vw, 360px"
+                    imageClassName="lemon-transition group-hover:scale-105"
+                  />
                   {product.badge && (
                     <span
                       className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs tracking-wide bg-white text-black ${
@@ -254,47 +302,73 @@ export function ProductGrid() {
         </div>
 
         {showPopup && popupProduct && (
-          <div className="fixed bottom-8 left-8 z-[60] w-80 animate-in slide-in-from-left-10 fade-in duration-500">
-            <Card className="rounded-[2.5rem] border-none shadow-[0_30px_60px_-12px_rgba(0,0,0,0.25)] overflow-hidden bg-white group">
-              <div className="bg-primary p-4 flex justify-between items-center text-primary-foreground">
+          <div className="fixed inset-x-4 bottom-36 z-[70] animate-in slide-in-from-bottom-6 fade-in duration-500 sm:inset-x-auto sm:bottom-8 sm:left-8 sm:w-80 sm:slide-in-from-left-10">
+            <Card className="overflow-hidden rounded-[2rem] border border-primary/15 bg-white shadow-[0_30px_60px_-12px_rgba(0,0,0,0.22)] sm:rounded-[2.5rem]">
+              <div className="flex items-center justify-between bg-primary px-4 py-3 text-primary-foreground sm:p-4">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkles className="h-4 w-4" />
                   <span className="text-[10px] font-black uppercase tracking-widest">Lemon Suggests</span>
                 </div>
-                <button onClick={() => setShowPopup(false)}>
-                  <X className="w-4 h-4" />
+                <button type="button" onClick={() => dismissPopup(true)} aria-label="Dismiss suggestion">
+                  <X className="h-4 w-4" />
                 </button>
               </div>
-              <div className="p-6">
-                <div className="flex gap-4 mb-6">
-                  <div className="w-20 h-20 bg-muted rounded-2xl overflow-hidden relative flex-shrink-0">
-                    <Image src={popupProduct.image} alt={popupProduct.name} fill className="object-cover" />
+
+              <div className="p-4 sm:p-6">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-[1.25rem] bg-muted sm:h-20 sm:w-20 sm:rounded-2xl">
+                    <ProductVisual
+                      name={popupProduct.name}
+                      image={popupProduct.image}
+                      category={popupProduct.category}
+                      badge={popupProduct.badge}
+                      variant="thumb"
+                      sizes="80px"
+                    />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-xs font-bold leading-tight mb-1">Hey there! I feel {popupProduct.name} would match perfectly with the items you’re looking at...</p>
-                    <p className="text-[10px] text-muted-foreground italic">“Things find their beauty once they find their soul.”</p>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Suggested match</p>
+                    <p className="mt-1 text-lg font-black leading-tight text-slate-900 sm:text-base">{popupProduct.name}</p>
+                    <p className="mt-2 text-xs leading-5 text-slate-500">
+                      Quick add from this {shopCategoryLabels[popupProduct.category].toLowerCase()} edit, without breaking your flow.
+                    </p>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-black">${popupProduct.price}</span>
-                    <Badge className="bg-secondary text-secondary-foreground text-[8px] font-black">EXTRA 10% OFF</Badge>
+
+                <div className="mt-5 flex items-end justify-between gap-3">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-2xl font-black text-slate-900 sm:text-sm">${popupProduct.price}</span>
+                      <Badge className="border-none bg-secondary text-[9px] font-black text-secondary-foreground">EXTRA 10% OFF</Badge>
+                    </div>
+                    <p className="mt-1 text-[11px] text-slate-500">Shows only after you reach the product section.</p>
                   </div>
-                  <Button
-                    className="w-full rounded-full bg-slate-900 text-white font-bold h-12 hover:scale-[1.02] transition-all"
-                    onClick={() => {
-                      addItem({
-                        id: popupProduct.id,
-                        name: popupProduct.name,
-                        description: popupProduct.description,
-                        price: popupProduct.price,
-                        image: popupProduct.image,
-                      })
-                      setShowPopup(false)
-                    }}
-                  >
-                    Add & Apply Discount
-                  </Button>
+
+                  <div className="flex gap-2">
+                    <Link
+                      href={`/product/${popupProduct.id}`}
+                      onClick={() => dismissPopup(true)}
+                      className="inline-flex h-11 items-center justify-center rounded-full border border-slate-200 px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                    >
+                      View
+                    </Link>
+                    <Button
+                      className="h-11 rounded-full bg-slate-900 px-4 text-sm font-bold text-white transition-all hover:scale-[1.02]"
+                      onClick={() => {
+                        addItem({
+                          id: popupProduct.id,
+                          name: popupProduct.name,
+                          description: popupProduct.description,
+                          price: popupProduct.price,
+                          image: popupProduct.image,
+                        })
+                        dismissPopup(true)
+                      }}
+                    >
+                      Quick Add
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Card>

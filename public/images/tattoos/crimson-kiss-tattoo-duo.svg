@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="134" y1="132" x2="1088" y2="1444" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE8D1"/>
+      <stop offset="0.48" stop-color="#FF6B8A"/>
+      <stop offset="1" stop-color="#4B0720"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" rx="72" fill="url(#bg)"/>
+  <circle cx="930" cy="246" r="158" fill="#FFF6E5" opacity="0.42"/>
+  <circle cx="210" cy="1320" r="220" fill="#FF9BAE" opacity="0.24"/>
+  <path d="M160 1498C184 1264 274 1052 424 966C548 896 706 900 812 992C914 1080 956 1256 934 1498H160Z" fill="#F7CDC6"/>
+  <path d="M600 922C706 946 790 1026 842 1146C892 1262 904 1380 886 1498H952C980 1330 980 1146 936 1028C890 900 794 800 672 776L600 922Z" fill="#E58AA0" opacity="0.74"/>
+  <path d="M0 12C0 5 5 0 11 0C15 0 18 2 20 6C22 2 25 0 29 0C35 0 40 5 40 12C40 22 31 29 20 39C9 29 0 22 0 12Z" transform="translate(520 1032) scale(1.7) rotate(-12)" fill="#F41469"/>
+  <path d="M0 12C0 5 5 0 11 0C15 0 18 2 20 6C22 2 25 0 29 0C35 0 40 5 40 12C40 22 31 29 20 39C9 29 0 22 0 12Z" transform="translate(614 1120) scale(1.1) rotate(16)" fill="#FF8C2B"/>
+  <rect x="734" y="202" width="236" height="320" rx="30" fill="#FFF4F9" opacity="0.94"/>
+  <rect x="786" y="286" width="132" height="26" rx="13" fill="#FFD4E5"/>
+  <rect x="786" y="332" width="160" height="26" rx="13" fill="#FFD4E5"/>
+  <path d="M0 12C0 5 5 0 11 0C15 0 18 2 20 6C22 2 25 0 29 0C35 0 40 5 40 12C40 22 31 29 20 39C9 29 0 22 0 12Z" transform="translate(810 378) scale(1.18) rotate(-10)" fill="#F41469"/>
+  <path d="M0 12C0 5 5 0 11 0C15 0 18 2 20 6C22 2 25 0 29 0C35 0 40 5 40 12C40 22 31 29 20 39C9 29 0 22 0 12Z" transform="translate(876 434) scale(0.9) rotate(18)" fill="#FF8C2B"/>
+  <rect x="860" y="434" width="226" height="304" rx="30" fill="#FFF0F6" opacity="0.84"/>
+  <path d="M0 12C0 5 5 0 11 0C15 0 18 2 20 6C22 2 25 0 29 0C35 0 40 5 40 12C40 22 31 29 20 39C9 29 0 22 0 12Z" transform="translate(924 524) scale(1.08) rotate(-8)" fill="#F41469"/>
+  <path d="M0 12C0 5 5 0 11 0C15 0 18 2 20 6C22 2 25 0 29 0C35 0 40 5 40 12C40 22 31 29 20 39C9 29 0 22 0 12Z" transform="translate(978 590) scale(0.82) rotate(20)" fill="#FFB63E"/>
+</svg>

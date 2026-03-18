@@ -4,6 +4,7 @@ import { TrustBadges } from "@/components/lemon/trust-badges"
 import { FeatureSection } from "@/components/lemon/feature-section"
 import { ProductGrid } from "@/components/lemon/product-grid"
 import { TattooSpotlight } from "@/components/lemon/tattoo-spotlight"
+import { FullPageSlider } from "@/components/lemon/full-page-slider"
 import { Testimonials } from "@/components/lemon/testimonials"
 import { CTABanner } from "@/components/lemon/cta-banner"
 import { Newsletter } from "@/components/lemon/newsletter"
@@ -36,6 +37,7 @@ export default function HomePage() {
         <TrustBadges />
         <ProductGrid />
         <TattooSpotlight />
+        <FullPageSlider />
         <FeatureSection />
         <Testimonials />
         <CTABanner />

@@ -5,8 +5,10 @@ import { Analytics } from '@vercel/analytics/next'
 import { CartProvider } from '@/components/lemon/cart-context'
 import { LemonOrchestrator } from '@/components/lemon/lemon-orchestrator'
 import { BottomNav } from '@/components/lemon/bottom-nav'
+import { Toaster } from '@/components/ui/toaster'
 import { StructuredData } from '@/components/seo/structured-data'
 import { absoluteUrl, getOrganizationSchema, getWebsiteSchema, siteConfig } from '@/lib/seo'
+import { getNeonData } from '@/lib/neon-data'
 import './globals.css'
 
 const dmSans = DM_Sans({ 
@@ -100,23 +102,26 @@ export const viewport: Viewport = {
   themeColor: '#F8E231',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const neonData = await getNeonData()
+
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${playfairDisplay.variable} font-sans antialiased bg-slate-50 lg:bg-slate-200 flex justify-center`}>
         <StructuredData data={[getOrganizationSchema(), getWebsiteSchema()]} />
         <div className="w-full max-w-none lg:max-w-[430px] min-h-screen bg-background shadow-2xl relative flex flex-col lg:my-8 lg:rounded-[3rem] lg:overflow-hidden lg:border-[8px] lg:border-slate-900">
           <CartProvider>
-            <LemonOrchestrator />
+            <LemonOrchestrator hasNeonData={neonData.available} />
             <main className="flex-1 overflow-y-auto no-scrollbar">
               {children}
             </main>
             <BottomNav />
           </CartProvider>
+          <Toaster />
         </div>
         <Analytics />
       </body>

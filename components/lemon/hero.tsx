@@ -3,6 +3,15 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
+import { ProductVisual } from "@/components/catalog/product-visual"
+import { shopProducts, shopCategoryLabels } from "@/lib/catalog"
+
+const heroProductIds = ["nightfall-corset-top", "orbit-tracking-tripod", "poison-cherry-flame-sheet"]
+const featuredHeroProducts = heroProductIds.flatMap((id) => {
+  const product = shopProducts.find((item) => item.id === id)
+  return product ? [product] : []
+})
+
 export function Hero() {
   return (
     <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-background pt-10">
@@ -42,6 +51,30 @@ export function Hero() {
               >
                 The Deep Store
               </Link>
+            </div>
+
+            <div className="mt-10 animate-blur-in opacity-0" style={{ animationDelay: '1.05s', animationFillMode: 'forwards' }}>
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Featured drops</p>
+              <div className="grid grid-cols-3 gap-3">
+                {featuredHeroProducts.map((product) => (
+                  <Link key={product.id} href={`/product/${product.id}`} className="group block">
+                    <div className="relative aspect-[0.82] overflow-hidden rounded-[1.5rem] bg-white/70 shadow-[0_20px_40px_-18px_rgba(0,0,0,0.22)] ring-1 ring-white/60 transition-transform duration-300 group-hover:-translate-y-1">
+                      <ProductVisual
+                        name={product.name}
+                        image={product.image}
+                        category={product.category}
+                        badge={product.badge}
+                        variant="hero"
+                        sizes="(max-width: 768px) 30vw, 140px"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent p-3 text-white">
+                        <p className="text-[9px] font-black uppercase tracking-[0.22em] text-white/70">{shopCategoryLabels[product.category]}</p>
+                        <p className="mt-1 line-clamp-2 text-xs font-black leading-tight">{product.name}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft, Minus, Plus, ChevronDown, Leaf, Heart, Award, Recycle, Star, Check, Shield, Sparkles } from "lucide-react"
 import { Header } from "@/components/lemon/header"
 import { Footer } from "@/components/lemon/footer"
+import { ProductVisual } from "@/components/catalog/product-visual"
 import { getProductById, type CatalogProduct } from "@/lib/catalog"
 
 const benefits = [
@@ -71,12 +71,14 @@ function ProductPageContent({ product, productId }: { product: CatalogProduct; p
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Product Image */}
             <div className="relative aspect-square rounded-3xl overflow-hidden bg-card lemon-shadow">
-              <Image
-                src={product.image || "/placeholder.svg"}
-                alt={product.name}
-                fill
-                className="object-cover"
+              <ProductVisual
+                name={product.name}
+                image={product.image}
+                category={product.category}
+                badge={product.badge}
+                variant="hero"
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
 
