@@ -201,20 +201,23 @@ export function ProductGrid() {
       { threshold: 0.1 }
     )
 
-    if (gridRef.current) {
-      gridObserver.observe(gridRef.current)
+    const currentGridRef = gridRef.current
+    const currentHeaderRef = headerRef.current
+
+    if (currentGridRef) {
+      gridObserver.observe(currentGridRef)
     }
 
-    if (headerRef.current) {
-      headerObserver.observe(headerRef.current)
+    if (currentHeaderRef) {
+      headerObserver.observe(currentHeaderRef)
     }
 
     return () => {
-      if (gridRef.current) {
-        gridObserver.unobserve(gridRef.current)
+      if (currentGridRef) {
+        gridObserver.unobserve(currentGridRef)
       }
-      if (headerRef.current) {
-        headerObserver.unobserve(headerRef.current)
+      if (currentHeaderRef) {
+        headerObserver.unobserve(currentHeaderRef)
       }
     }
   }, [])

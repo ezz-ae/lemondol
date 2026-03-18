@@ -30,14 +30,14 @@ export function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center gap-1 py-2 px-3 rounded-2xl transition-all duration-300 ${
+              className={`flex flex-col items-center gap-1.5 py-2.5 px-3.5 rounded-2xl transition-all duration-300 active:scale-90 select-none ${
                 isActive 
-                  ? "bg-primary text-primary-foreground scale-105 shadow-lg" 
+                  ? "bg-primary text-primary-foreground scale-105 shadow-lg font-bold" 
                   : "text-white/60 hover:text-white"
               }`}
             >
-              <Icon className="w-4 h-4" />
-              <span className="text-[8px] font-black uppercase tracking-tighter">{item.label}</span>
+              <Icon className="w-5 h-5" />
+              <span className="text-[9px] font-black uppercase tracking-tight">{item.label}</span>
             </Link>
           )
         })}
@@ -45,14 +45,14 @@ export function BottomNav() {
         {showDeepStore && (
           <Link
             href="/deep-store"
-            className={`flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 ${
+            className={`flex flex-col items-center gap-1.5 p-3 rounded-2xl transition-all duration-300 active:scale-90 select-none ${
               pathname === "/deep-store" 
-                ? "bg-purple-500 text-white scale-110 shadow-lg" 
+                ? "bg-purple-500 text-white scale-110 shadow-lg font-bold" 
                 : "text-purple-400/60 hover:text-purple-400"
             }`}
           >
-            <ShieldCheck className="w-5 h-5" />
-            <span className="text-[10px] font-black uppercase tracking-tighter">Deep</span>
+            <ShieldCheck className="w-6 h-6" />
+            <span className="text-[10px] font-black uppercase tracking-tight">Deep</span>
           </Link>
         )}
       </nav>

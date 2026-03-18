@@ -18,6 +18,7 @@ type ProductVisualProps = {
   priority?: boolean
   sizes?: string
   variant?: ProductVisualVariant
+  draggable?: boolean
 }
 
 const themeByCategory: Record<
@@ -80,6 +81,7 @@ export function ProductVisual({
   priority = false,
   sizes,
   variant = "card",
+  draggable = true,
 }: ProductVisualProps) {
   const [hasError, setHasError] = useState(false)
   const theme = themeByCategory[category]
@@ -133,6 +135,7 @@ export function ProductVisual({
             sizes={sizes}
             className={cn("object-cover", imageClassName)}
             onError={() => setHasError(true)}
+            draggable={draggable}
           />
         )}
       </div>

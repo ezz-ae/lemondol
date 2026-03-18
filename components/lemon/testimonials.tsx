@@ -88,7 +88,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
     
 
     {/* Quote */}
-    <p className="text-foreground/80 leading-relaxed mb-4 text-pretty font-medium text-xl font-serif tracking-wide">
+    <p className="text-foreground/80 leading-relaxed mb-4 text-pretty font-medium text-xl font-serif tracking-wide select-none">
       &ldquo;{testimonial.text}&rdquo;
     </p>
 
@@ -230,6 +230,11 @@ export function Testimonials() {
 
         .animate-scroll-up-slow {
           animation: scroll-up 60s linear infinite;
+        }
+
+        .relative:active .animate-scroll-down,
+        .relative:active .animate-scroll-up {
+          animation-play-state: paused;
         }
       `}</style>
     </section>

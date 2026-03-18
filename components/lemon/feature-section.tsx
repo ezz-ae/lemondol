@@ -63,28 +63,18 @@ export function FeatureSection() {
       { threshold: 0.1 }
     )
 
-    if (bentoRef.current) {
-      observer.observe(bentoRef.current)
-    }
+    const currentBentoRef = bentoRef.current
+    const currentVideoRef = videoSectionRef.current
+    const currentHeaderRef = headerRef.current
 
-    if (videoSectionRef.current) {
-      videoObserver.observe(videoSectionRef.current)
-    }
-
-    if (headerRef.current) {
-      headerObserver.observe(headerRef.current)
-    }
+    if (currentBentoRef) observer.observe(currentBentoRef)
+    if (currentVideoRef) videoObserver.observe(currentVideoRef)
+    if (currentHeaderRef) headerObserver.observe(currentHeaderRef)
 
     return () => {
-      if (bentoRef.current) {
-        observer.unobserve(bentoRef.current)
-      }
-      if (videoSectionRef.current) {
-        videoObserver.unobserve(videoSectionRef.current)
-      }
-      if (headerRef.current) {
-        headerObserver.unobserve(headerRef.current)
-      }
+      if (currentBentoRef) observer.unobserve(currentBentoRef)
+      if (currentVideoRef) videoObserver.unobserve(currentVideoRef)
+      if (currentHeaderRef) headerObserver.unobserve(currentHeaderRef)
     }
   }, [])
 

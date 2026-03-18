@@ -229,6 +229,7 @@ export function ProductGrid() {
                     badge={product.badge}
                     sizes="(max-width: 768px) 90vw, 360px"
                     imageClassName="lemon-transition group-hover:scale-105"
+                    draggable={false}
                   />
                   {product.badge && (
                     <span
@@ -245,10 +246,10 @@ export function ProductGrid() {
                   )}
                 </Link>
 
-                <div className="absolute bottom-4 right-4 flex flex-col gap-2 opacity-100 lg:opacity-0 translate-y-0 lg:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-20">
+                <div className="absolute bottom-4 right-4 flex flex-col gap-3 opacity-100 lg:opacity-0 translate-y-0 lg:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-20">
                   <button
                     type="button"
-                    className={`w-11 h-11 lg:w-10 lg:h-10 rounded-full backdrop-blur-md flex items-center justify-center shadow-xl transition-all ${
+                    className={`w-11 h-11 lg:w-10 lg:h-10 rounded-full backdrop-blur-md flex items-center justify-center shadow-xl transition-all active:scale-90 ${
                       likedIds.includes(product.id) ? "bg-primary text-primary-foreground scale-110" : "bg-white/90 text-foreground"
                     }`}
                     onClick={(event) => {

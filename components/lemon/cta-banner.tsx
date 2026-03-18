@@ -18,13 +18,14 @@ export function CTABanner() {
       { threshold: 0.1 }
     )
 
-    if (bannerRef.current) {
-      observer.observe(bannerRef.current)
+    const currentBannerRef = bannerRef.current
+    if (currentBannerRef) {
+      observer.observe(currentBannerRef)
     }
 
     return () => {
-      if (bannerRef.current) {
-        observer.unobserve(bannerRef.current)
+      if (currentBannerRef) {
+        observer.unobserve(currentBannerRef)
       }
     }
   }, [])

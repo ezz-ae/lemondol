@@ -13,7 +13,7 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50 w-full px-4 py-4 bg-background/80 backdrop-blur-xl border-b border-slate-50">
         <div className="flex items-center justify-between h-10 relative">
-          <button type="button" className="p-2 text-slate-400" aria-label="Search">
+          <button type="button" className="p-2 text-slate-400 active:scale-95 transition-transform" aria-label="Search">
             <Search className="w-5 h-5" />
           </button>
 
@@ -29,7 +29,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="relative p-2 text-slate-400"
+            className="relative p-2 text-slate-400 active:scale-95 transition-transform"
             aria-label="Open cart"
           >
             <ShoppingBag className="w-5 h-5" />

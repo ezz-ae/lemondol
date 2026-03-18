@@ -56,7 +56,7 @@ export function FullPageSlider() {
         style={{ scale, opacity }}
         className="w-full h-full rounded-[2.5rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)] relative bg-white"
       >
-        <Carousel className="w-full h-full" opts={{ loop: true }}>
+        <Carousel className="w-full h-full" opts={{ loop: true, dragFree: true }}>
           <CarouselContent className="-ml-0 h-full">
             {slides.map((slide, index) => (
               <CarouselItem key={index} className="pl-0 h-full relative">
@@ -66,6 +66,7 @@ export function FullPageSlider() {
                     alt={slide.title}
                     fill
                     className="object-cover"
+                    draggable={false}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 </div>
