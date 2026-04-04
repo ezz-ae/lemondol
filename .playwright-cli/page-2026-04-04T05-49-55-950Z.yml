@@ -1,0 +1,709 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - button "Search" [ref=e5]:
+          - img [ref=e6]
+        - link "L Lemondol" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e10]:
+            - generic [ref=e11]: L
+            - heading "Lemondol" [level=1] [ref=e12]
+        - button "Open cart" [ref=e13]:
+          - img [ref=e14]
+    - link [ref=e18] [cursor=pointer]:
+      - /url: /account
+      - img [ref=e21]
+    - main [ref=e25]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e33]:
+            - generic [ref=e36]: Fresh. Vibrant. Affordable.
+            - heading "Style that Squeezes." [level=2] [ref=e37]:
+              - generic [ref=e38]: Style that
+              - generic [ref=e39]: Squeezes.
+            - paragraph [ref=e40]: High-quality products that make every day feel like a fresh start.
+            - generic [ref=e41]:
+              - link "Explore Shop" [ref=e42] [cursor=pointer]:
+                - /url: /shop
+                - text: Explore Shop
+                - img [ref=e43]
+              - link "The Deep Store" [ref=e45] [cursor=pointer]:
+                - /url: /deep-store
+            - generic [ref=e46]:
+              - paragraph [ref=e47]: Featured drops
+              - generic [ref=e48]:
+                - link "Nightfall Mesh Corset Top Clothing Nightfall Mesh Corset Top" [ref=e49] [cursor=pointer]:
+                  - /url: /product/nightfall-corset-top
+                  - generic [ref=e50]:
+                    - img "Nightfall Mesh Corset Top" [ref=e56]
+                    - generic [ref=e57]:
+                      - paragraph [ref=e58]: Clothing
+                      - paragraph [ref=e59]: Nightfall Mesh Corset Top
+                - link "Orbit Face-Tracking Tripod Accessories Orbit Face-Tracking Tripod" [ref=e60] [cursor=pointer]:
+                  - /url: /product/orbit-tracking-tripod
+                  - generic [ref=e61]:
+                    - img "Orbit Face-Tracking Tripod" [ref=e67]
+                    - generic [ref=e68]:
+                      - paragraph [ref=e69]: Accessories
+                      - paragraph [ref=e70]: Orbit Face-Tracking Tripod
+                - link "Poison Cherry Flame Sheet One-Time Tattoos Poison Cherry Flame Sheet" [ref=e71] [cursor=pointer]:
+                  - /url: /product/poison-cherry-flame-sheet
+                  - generic [ref=e72]:
+                    - img "Poison Cherry Flame Sheet" [ref=e78]
+                    - generic [ref=e79]:
+                      - paragraph [ref=e80]: One-Time Tattoos
+                      - paragraph [ref=e81]: Poison Cherry Flame Sheet
+          - generic [ref=e83]: Scroll
+        - generic [ref=e86]:
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - img [ref=e91]
+              - heading "Fresh Quality" [level=3] [ref=e93]
+              - paragraph [ref=e94]: Premium items for you
+            - generic [ref=e95]:
+              - img [ref=e96]
+              - heading "AI Studio" [level=3] [ref=e98]
+              - paragraph [ref=e99]: Powered by Veo 3
+            - generic [ref=e100]:
+              - img [ref=e101]
+              - heading "Secure Pay" [level=3] [ref=e103]
+              - paragraph [ref=e104]: Safe & seamless checkout
+            - generic [ref=e105]:
+              - img [ref=e106]
+              - heading "Girls' Choice" [level=3] [ref=e108]
+              - paragraph [ref=e109]: Curated with love
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - generic [ref=e113]: Fresh Finds
+              - heading "Your Daily Squeeze" [level=2] [ref=e114]
+              - paragraph [ref=e115]: Curated pieces that make every day feel like a fresh start, now with creator gear and one-time tattoo drops.
+            - generic [ref=e117]:
+              - button "Clothing" [ref=e118]
+              - button "Accessories" [ref=e119]
+              - button "Lifestyle" [ref=e120]
+              - button "One-Time Tattoos" [ref=e121]
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - img
+                - generic [ref=e124]:
+                  - link "Clothing Bestseller SL Lemondol edit Sunshine Lemon Dress Bestseller" [ref=e125] [cursor=pointer]:
+                    - /url: /product/lemon-dress
+                    - generic [ref=e131]:
+                      - generic [ref=e132]:
+                        - generic [ref=e133]: Clothing
+                        - generic [ref=e134]: Bestseller
+                      - generic [ref=e135]:
+                        - paragraph: SL
+                        - generic [ref=e136]:
+                          - paragraph [ref=e137]: Lemondol edit
+                          - paragraph [ref=e138]: Sunshine Lemon Dress
+                    - generic [ref=e139]: Bestseller
+                  - generic [ref=e140]:
+                    - button [ref=e141]:
+                      - img [ref=e142]
+                    - button "Add to cart" [ref=e144]:
+                      - img [ref=e145]
+                    - link "Sizing Help" [ref=e148] [cursor=pointer]:
+                      - /url: /account
+                      - img [ref=e149]
+                  - generic [ref=e155]:
+                    - link "Sunshine Lemon Dress" [ref=e156] [cursor=pointer]:
+                      - /url: /product/lemon-dress
+                      - heading "Sunshine Lemon Dress" [level=3] [ref=e157]
+                    - paragraph [ref=e158]: Clothing
+                    - generic [ref=e160]:
+                      - generic [ref=e161]: $45
+                      - generic [ref=e162]: $55
+              - generic [ref=e164]:
+                - link "Clothing LS Lemondol edit Lemon Squeeze Tee" [ref=e165] [cursor=pointer]:
+                  - /url: /product/lemon-tee
+                  - generic [ref=e171]:
+                    - generic [ref=e173]: Clothing
+                    - generic [ref=e174]:
+                      - paragraph: LS
+                      - generic [ref=e175]:
+                        - paragraph [ref=e176]: Lemondol edit
+                        - paragraph [ref=e177]: Lemon Squeeze Tee
+                - generic [ref=e178]:
+                  - button [ref=e179]:
+                    - img [ref=e180]
+                  - button "Add to cart" [ref=e182]:
+                    - img [ref=e183]
+                  - link "Sizing Help" [ref=e186] [cursor=pointer]:
+                    - /url: /account
+                    - img [ref=e187]
+                - generic [ref=e193]:
+                  - link "Lemon Squeeze Tee" [ref=e194] [cursor=pointer]:
+                    - /url: /product/lemon-tee
+                    - heading "Lemon Squeeze Tee" [level=3] [ref=e195]
+                  - paragraph [ref=e196]: Clothing
+                  - generic [ref=e199]: $25
+              - generic [ref=e201]:
+                - link "Clothing New S& Lemondol edit Sour & Sweet Socks New" [ref=e202] [cursor=pointer]:
+                  - /url: /product/lemon-socks
+                  - generic [ref=e208]:
+                    - generic [ref=e209]:
+                      - generic [ref=e210]: Clothing
+                      - generic [ref=e211]: New
+                    - generic [ref=e212]:
+                      - paragraph: S&
+                      - generic [ref=e213]:
+                        - paragraph [ref=e214]: Lemondol edit
+                        - paragraph [ref=e215]: Sour & Sweet Socks
+                  - generic [ref=e216]: New
+                - generic [ref=e217]:
+                  - button [ref=e218]:
+                    - img [ref=e219]
+                  - button "Add to cart" [ref=e221]:
+                    - img [ref=e222]
+                  - link "Sizing Help" [ref=e225] [cursor=pointer]:
+                    - /url: /account
+                    - img [ref=e226]
+                - generic [ref=e232]:
+                  - link "Sour & Sweet Socks" [ref=e233] [cursor=pointer]:
+                    - /url: /product/lemon-socks
+                    - heading "Sour & Sweet Socks" [level=3] [ref=e234]
+                  - paragraph [ref=e235]: Clothing
+                  - generic [ref=e238]: $12
+              - generic [ref=e239]:
+                - img
+                - generic [ref=e240]:
+                  - link "High-Rise Pleated Mini Skirt New" [ref=e241] [cursor=pointer]:
+                    - /url: /product/high-rise-pleated-mini
+                    - img "High-Rise Pleated Mini Skirt" [ref=e247]
+                    - generic [ref=e248]: New
+                  - generic [ref=e249]:
+                    - button [ref=e250]:
+                      - img [ref=e251]
+                    - button "Add to cart" [ref=e253]:
+                      - img [ref=e254]
+                    - link "Sizing Help" [ref=e257] [cursor=pointer]:
+                      - /url: /account
+                      - img [ref=e258]
+                  - generic [ref=e264]:
+                    - link "High-Rise Pleated Mini Skirt" [ref=e265] [cursor=pointer]:
+                      - /url: /product/high-rise-pleated-mini
+                      - heading "High-Rise Pleated Mini Skirt" [level=3] [ref=e266]
+                    - paragraph [ref=e267]: Clothing
+                    - generic [ref=e269]:
+                      - generic [ref=e270]: $42
+                      - generic [ref=e271]: $58
+            - link "View All Products" [ref=e273] [cursor=pointer]:
+              - /url: /shop?category=clothing
+          - generic [ref=e276]:
+            - generic [ref=e277]:
+              - generic [ref=e278]: Wild Ink Collection
+              - heading "Generated one-time tattoos with a bolder mood" [level=2] [ref=e279]
+              - paragraph [ref=e280]: Build louder festival looks, photo-shoot outfits, and after-dark styling with glossy tattoo art that layers easily with the skirts, corsets, and creator gear already in the collection.
+              - generic [ref=e281]:
+                - generic [ref=e282]:
+                  - img [ref=e283]
+                  - text: Generated editorial art
+                - generic [ref=e285]:
+                  - img [ref=e286]
+                  - text: Water-transfer application
+                - generic [ref=e289]:
+                  - img [ref=e290]
+                  - text: Easy oil removal
+                - generic [ref=e292]:
+                  - img [ref=e293]
+                  - text: Style with skirts + corsets
+                - generic [ref=e295]:
+                  - img [ref=e296]
+                  - text: 261 live tattoo drops
+              - generic [ref=e298]:
+                - link "Chrome Siren Star Sheet Bestseller One-Time Tattoos Chrome Siren Star Sheet A silver-toned temporary tattoo sheet with starburst and chrome-inspired motifs made for collarbones, hips, wrists, and photo-shoot looks. $8 View" [ref=e299] [cursor=pointer]:
+                  - /url: /product/chrome-siren-star-sheet
+                  - generic [ref=e300]:
+                    - img "Chrome Siren Star Sheet" [ref=e306]
+                    - generic [ref=e307]: Bestseller
+                  - generic [ref=e308]:
+                    - paragraph [ref=e309]: One-Time Tattoos
+                    - heading "Chrome Siren Star Sheet" [level=3] [ref=e310]
+                    - paragraph [ref=e311]: A silver-toned temporary tattoo sheet with starburst and chrome-inspired motifs made for collarbones, hips, wrists, and photo-shoot looks.
+                    - generic [ref=e312]:
+                      - generic [ref=e313]: $8
+                      - generic [ref=e314]:
+                        - text: View
+                        - img [ref=e315]
+                - link "Poison Cherry Flame Sheet New One-Time Tattoos Poison Cherry Flame Sheet A one-sheet temporary tattoo with cherry, flame, and sparkle motifs designed for hips, shoulders, wrists, and nightlife looks. $10 View" [ref=e317] [cursor=pointer]:
+                  - /url: /product/poison-cherry-flame-sheet
+                  - generic [ref=e318]:
+                    - img "Poison Cherry Flame Sheet" [ref=e324]
+                    - generic [ref=e325]: New
+                  - generic [ref=e326]:
+                    - paragraph [ref=e327]: One-Time Tattoos
+                    - heading "Poison Cherry Flame Sheet" [level=3] [ref=e328]
+                    - paragraph [ref=e329]: A one-sheet temporary tattoo with cherry, flame, and sparkle motifs designed for hips, shoulders, wrists, and nightlife looks.
+                    - generic [ref=e330]:
+                      - generic [ref=e331]: $10
+                      - generic [ref=e332]:
+                        - text: View
+                        - img [ref=e333]
+                - link "Venom Heart Body Ink Sheet New One-Time Tattoos Venom Heart Body Ink Sheet A single-sheet temporary tattoo with thorned heart motifs and sharp linework designed for shoulders, arms, ribs, and late-night styling. $9 View" [ref=e335] [cursor=pointer]:
+                  - /url: /product/venom-heart-body-ink-sheet
+                  - generic [ref=e336]:
+                    - img "Venom Heart Body Ink Sheet" [ref=e342]
+                    - generic [ref=e343]: New
+                  - generic [ref=e344]:
+                    - paragraph [ref=e345]: One-Time Tattoos
+                    - heading "Venom Heart Body Ink Sheet" [level=3] [ref=e346]
+                    - paragraph [ref=e347]: A single-sheet temporary tattoo with thorned heart motifs and sharp linework designed for shoulders, arms, ribs, and late-night styling.
+                    - generic [ref=e348]:
+                      - generic [ref=e349]: $9
+                      - generic [ref=e350]:
+                        - text: View
+                        - img [ref=e351]
+                - link "Electric Halo Spine Sheet Bestseller One-Time Tattoos Electric Halo Spine Sheet A two-sheet temporary tattoo set mixing halos, bolts, and vertical accents for spine, leg, and sternum styling. $12 View" [ref=e353] [cursor=pointer]:
+                  - /url: /product/electric-halo-spine-sheet
+                  - generic [ref=e354]:
+                    - img "Electric Halo Spine Sheet" [ref=e360]
+                    - generic [ref=e361]: Bestseller
+                  - generic [ref=e362]:
+                    - paragraph [ref=e363]: One-Time Tattoos
+                    - heading "Electric Halo Spine Sheet" [level=3] [ref=e364]
+                    - paragraph [ref=e365]: A two-sheet temporary tattoo set mixing halos, bolts, and vertical accents for spine, leg, and sternum styling.
+                    - generic [ref=e366]:
+                      - generic [ref=e367]: $12
+                      - generic [ref=e368]:
+                        - text: View
+                        - img [ref=e369]
+              - generic [ref=e371]:
+                - generic [ref=e372]:
+                  - paragraph [ref=e373]: More ink in the vault
+                  - generic [ref=e374]: 6 extra drops
+                - generic [ref=e375]:
+                  - link "Neon Heart Ink Sheets One-Time Tattoos Neon Heart Ink Sheets $14" [ref=e376] [cursor=pointer]:
+                    - /url: /product/neon-heart-ink-sheets
+                    - img "Neon Heart Ink Sheets" [ref=e383]
+                    - paragraph [ref=e384]: One-Time Tattoos
+                    - heading "Neon Heart Ink Sheets" [level=3] [ref=e385]
+                    - paragraph [ref=e386]: $14
+                  - link "Script Shadow Tattoo Sheet One-Time Tattoos Script Shadow Tattoo Sheet $4" [ref=e387] [cursor=pointer]:
+                    - /url: /product/script-shadow-tattoo-sheet
+                    - img "Script Shadow Tattoo Sheet" [ref=e394]
+                    - paragraph [ref=e395]: One-Time Tattoos
+                    - heading "Script Shadow Tattoo Sheet" [level=3] [ref=e396]
+                    - paragraph [ref=e397]: $4
+                  - link "Love Note One-Time Ink Pack One-Time Tattoos Love Note One-Time Ink Pack $6" [ref=e398] [cursor=pointer]:
+                    - /url: /product/love-note-ink-pack
+                    - img "Love Note One-Time Ink Pack" [ref=e405]
+                    - paragraph [ref=e406]: One-Time Tattoos
+                    - heading "Love Note One-Time Ink Pack" [level=3] [ref=e407]
+                    - paragraph [ref=e408]: $6
+                  - link "Crimson Kiss Tattoo Duo One-Time Tattoos Crimson Kiss Tattoo Duo $12" [ref=e409] [cursor=pointer]:
+                    - /url: /product/crimson-kiss-tattoo-duo
+                    - img "Crimson Kiss Tattoo Duo" [ref=e416]
+                    - paragraph [ref=e417]: One-Time Tattoos
+                    - heading "Crimson Kiss Tattoo Duo" [level=3] [ref=e418]
+                    - paragraph [ref=e419]: $12
+                  - link "Midnight Script Ink Set One-Time Tattoos Midnight Script Ink Set $5" [ref=e420] [cursor=pointer]:
+                    - /url: /product/midnight-script-ink-set
+                    - img "Midnight Script Ink Set" [ref=e427]
+                    - paragraph [ref=e428]: One-Time Tattoos
+                    - heading "Midnight Script Ink Set" [level=3] [ref=e429]
+                    - paragraph [ref=e430]: $5
+                  - link "Rose Glow Mini Ink Pack One-Time Tattoos Rose Glow Mini Ink Pack $7" [ref=e431] [cursor=pointer]:
+                    - /url: /product/rose-glow-mini-ink-pack
+                    - img "Rose Glow Mini Ink Pack" [ref=e438]
+                    - paragraph [ref=e439]: One-Time Tattoos
+                    - heading "Rose Glow Mini Ink Pack" [level=3] [ref=e440]
+                    - paragraph [ref=e441]: $7
+            - generic [ref=e442]:
+              - generic [ref=e443]:
+                - img [ref=e444]
+                - text: Build the full look
+              - heading "Pair the tattoos with skirts, corsets, and creator gear" [level=3] [ref=e447]
+              - paragraph [ref=e448]: The tattoo drop works best when it lives inside a full outfit system. These matching pieces help turn the category into a complete look.
+              - generic [ref=e449]:
+                - generic [ref=e450]:
+                  - paragraph [ref=e451]: Mood board
+                  - heading "Chrome flash" [level=4] [ref=e452]
+                  - paragraph [ref=e453]: Metallic stars and jewelry-inspired accents that light up under flash and nightlife lighting.
+                - generic [ref=e454]:
+                  - paragraph [ref=e455]: Mood board
+                  - heading "Cherry heat" [level=4] [ref=e456]
+                  - paragraph [ref=e457]: Playful cherry-and-flame artwork that makes the collection feel hotter and more glam.
+                - generic [ref=e458]:
+                  - paragraph [ref=e459]: Mood board
+                  - heading "Electric placements" [level=4] [ref=e460]
+                  - paragraph [ref=e461]: Halo and bolt shapes built for spine, sternum, and leg placements with more direction.
+              - generic [ref=e462]:
+                - link "Nightfall Mesh Corset Top Clothing Nightfall Mesh Corset Top $32" [ref=e463] [cursor=pointer]:
+                  - /url: /product/nightfall-corset-top
+                  - img "Nightfall Mesh Corset Top" [ref=e470]
+                  - generic [ref=e471]:
+                    - paragraph [ref=e472]: Clothing
+                    - heading "Nightfall Mesh Corset Top" [level=4] [ref=e473]
+                    - paragraph [ref=e474]: $32
+                  - img [ref=e475]
+                - link "Cherry Check Pleated Skirt Clothing Cherry Check Pleated Skirt $19" [ref=e477] [cursor=pointer]:
+                  - /url: /product/cherry-check-pleated-skirt
+                  - img "Cherry Check Pleated Skirt" [ref=e484]
+                  - generic [ref=e485]:
+                    - paragraph [ref=e486]: Clothing
+                    - heading "Cherry Check Pleated Skirt" [level=4] [ref=e487]
+                    - paragraph [ref=e488]: $19
+                  - img [ref=e489]
+                - link "Halo Smart Tripod Stand Accessories Halo Smart Tripod Stand $98" [ref=e491] [cursor=pointer]:
+                  - /url: /product/halo-smart-tripod-stand
+                  - img "Halo Smart Tripod Stand" [ref=e498]
+                  - generic [ref=e499]:
+                    - paragraph [ref=e500]: Accessories
+                    - heading "Halo Smart Tripod Stand" [level=4] [ref=e501]
+                    - paragraph [ref=e502]: $98
+                  - img [ref=e503]
+              - generic [ref=e505]:
+                - link "Browse one-time tattoos" [ref=e506] [cursor=pointer]:
+                  - /url: /shop/tattoos
+                  - text: Browse one-time tattoos
+                  - img [ref=e507]
+                - link "See full catalog" [ref=e509] [cursor=pointer]:
+                  - /url: /shop
+          - region [ref=e512]:
+            - generic:
+              - generic:
+                - group:
+                  - generic:
+                    - img "Luxury Recreation"
+                  - generic [ref=e513]:
+                    - generic [ref=e514]: AI-Perfected Visuals
+                    - generic [ref=e515]:
+                      - heading "Luxury Recreation" [level=2] [ref=e516]
+                      - paragraph [ref=e517]: Experience your favorite finds recreated with high-end editorial fidelity. Our AI engine transforms raw discovery into luxury campaign assets.
+                    - link "View Perfected" [ref=e518] [cursor=pointer]:
+                      - /url: /neon-data
+                      - text: View Perfected
+                      - img
+                  - img [ref=e521]
+                - group:
+                  - generic:
+                    - img "Girls Time"
+                  - generic [ref=e523]:
+                    - generic [ref=e524]: Aesthetic Discovery
+                    - generic [ref=e525]:
+                      - heading "Girls Time" [level=2] [ref=e526]
+                      - paragraph [ref=e527]: The ultimate guide to the city's most vibrant brunch spots, dinner lofts, and rooftop sips. Planned by girls, for girls.
+                    - link "Explore Spots" [ref=e528] [cursor=pointer]:
+                      - /url: /girls-time
+                      - text: Explore Spots
+                      - img
+                  - img [ref=e531]
+                - group:
+                  - generic:
+                    - img "Wild Ink"
+                  - generic [ref=e533]:
+                    - generic [ref=e534]: Statement Body Art
+                    - generic [ref=e535]:
+                      - heading "Wild Ink" [level=2] [ref=e536]
+                      - paragraph [ref=e537]: Large-scale sleeves, murals, and neo-tribal fragments. Our boldest tattoo collection yet, designed for those who play with fire.
+                    - link "Shop Wild" [ref=e538] [cursor=pointer]:
+                      - /url: /shop/tattoos
+                      - text: Shop Wild
+                      - img
+                  - img [ref=e541]
+          - generic [ref=e551]:
+            - generic [ref=e552]:
+              - generic [ref=e557]:
+                - heading "100% Plant-Based" [level=3] [ref=e558]
+                - paragraph [ref=e559]: Formulated exclusively with botanical ingredients and natural plant extracts.
+              - generic [ref=e560]:
+                - img "Natural ingredients" [ref=e561]
+                - generic [ref=e562]:
+                  - heading "Fresh Styles" [level=3] [ref=e563]
+                  - heading "Fresh You" [level=3] [ref=e564]
+                  - generic [ref=e565]:
+                    - generic [ref=e566]:
+                      - img [ref=e567]
+                      - generic [ref=e569]: Curated Collections
+                    - generic [ref=e570]:
+                      - img [ref=e571]
+                      - generic [ref=e574]: Affordable Prices
+                    - generic [ref=e575]:
+                      - img [ref=e576]
+                      - generic [ref=e578]: Vibrant Designs
+              - generic [ref=e582]:
+                - img [ref=e584]
+                - heading "Easy Shopping" [level=3] [ref=e587]
+                - heading "Fast Delivery" [level=3] [ref=e588]
+            - generic [ref=e592]:
+              - generic [ref=e593]: Why Lemondol
+              - heading "Style that breathes." [level=2] [ref=e594]
+              - paragraph [ref=e595]: We believe fashion should be a fresh experience, not just a purchase. Every piece is curated with intention and love for your unique vibe.
+              - generic [ref=e596]:
+                - generic [ref=e597]:
+                  - img [ref=e599]
+                  - heading "Curated Style" [level=3] [ref=e602]
+                  - paragraph [ref=e603]: Only the freshest picks for you
+                - generic [ref=e604]:
+                  - img [ref=e606]
+                  - heading "Vibrant Quality" [level=3] [ref=e608]
+                  - paragraph [ref=e609]: High standards, bright results
+                - generic [ref=e610]:
+                  - img [ref=e612]
+                  - heading "Affordable Joy" [level=3] [ref=e615]
+                  - paragraph [ref=e616]: Budget-friendly happy shopping
+                - generic [ref=e617]:
+                  - img [ref=e619]
+                  - heading "Fast Discovery" [level=3] [ref=e621]
+                  - paragraph [ref=e622]: Find your new favorites instantly
+          - generic [ref=e624]:
+            - generic [ref=e625]:
+              - generic [ref=e626]: Kind Words
+              - heading "Loved by thousands" [level=2] [ref=e627]
+            - generic [ref=e629]:
+              - generic [ref=e631]:
+                - generic [ref=e632]:
+                  - paragraph [ref=e633]: “Lemondol has the cutest dresses! The quality is amazing for the price, and I always get so many compliments.”
+                  - generic [ref=e634]:
+                    - generic [ref=e635]:
+                      - paragraph [ref=e636]: Sarah M.
+                      - paragraph [ref=e637]: New York
+                    - generic [ref=e638]: Sunshine Lemon Dress
+                - generic [ref=e639]:
+                  - paragraph [ref=e640]: “I love the 'Deep Store' collection. It's so hard to find high-quality wellness items that are also stylish. Lemondol nailed it.”
+                  - generic [ref=e641]:
+                    - generic [ref=e642]:
+                      - paragraph [ref=e643]: Maria K.
+                      - paragraph [ref=e644]: Miami
+                    - generic [ref=e645]: Silk Wellness Set
+                - generic [ref=e646]:
+                  - paragraph [ref=e647]: “The texture of the silk pillowcase is perfection. It feels so luxurious and has improved my sleep routine.”
+                  - generic [ref=e648]:
+                    - generic [ref=e649]:
+                      - paragraph [ref=e650]: Claire B.
+                      - paragraph [ref=e651]: Austin
+                    - generic [ref=e652]: Silk Set
+                - generic [ref=e653]:
+                  - paragraph [ref=e654]: “Lemondol has the cutest dresses! The quality is amazing for the price, and I always get so many compliments.”
+                  - generic [ref=e655]:
+                    - generic [ref=e656]:
+                      - paragraph [ref=e657]: Sarah M.
+                      - paragraph [ref=e658]: New York
+                    - generic [ref=e659]: Sunshine Lemon Dress
+                - generic [ref=e660]:
+                  - paragraph [ref=e661]: “I love the 'Deep Store' collection. It's so hard to find high-quality wellness items that are also stylish. Lemondol nailed it.”
+                  - generic [ref=e662]:
+                    - generic [ref=e663]:
+                      - paragraph [ref=e664]: Maria K.
+                      - paragraph [ref=e665]: Miami
+                    - generic [ref=e666]: Silk Wellness Set
+                - generic [ref=e667]:
+                  - paragraph [ref=e668]: “The texture of the silk pillowcase is perfection. It feels so luxurious and has improved my sleep routine.”
+                  - generic [ref=e669]:
+                    - generic [ref=e670]:
+                      - paragraph [ref=e671]: Claire B.
+                      - paragraph [ref=e672]: Austin
+                    - generic [ref=e673]: Silk Set
+              - generic [ref=e675]:
+                - generic [ref=e676]:
+                  - paragraph [ref=e677]: “Finally, a store that feels fresh and fun. The AI Studio helped me pick the perfect accessories for my graduation.”
+                  - generic [ref=e678]:
+                    - generic [ref=e679]:
+                      - paragraph [ref=e680]: Emma L.
+                      - paragraph [ref=e681]: Los Angeles
+                    - generic [ref=e682]: Citrus Canvas Tote
+                - generic [ref=e683]:
+                  - paragraph [ref=e684]: “Fast shipping and the packaging was so cute! You can tell they really care about the 'vibrant' girl experience.”
+                  - generic [ref=e685]:
+                    - generic [ref=e686]:
+                      - paragraph [ref=e687]: Sophie T.
+                      - paragraph [ref=e688]: Seattle
+                    - generic [ref=e689]: Spring Meadow Hat
+                - generic [ref=e690]:
+                  - paragraph [ref=e691]: “I love that Lemondol focuses on high quality at affordable prices. It's rare to find such a curated selection.”
+                  - generic [ref=e692]:
+                    - generic [ref=e693]:
+                      - paragraph [ref=e694]: Lily W.
+                      - paragraph [ref=e695]: Portland
+                    - generic [ref=e696]: Zest Sneakers
+                - generic [ref=e697]:
+                  - paragraph [ref=e698]: “Finally, a store that feels fresh and fun. The AI Studio helped me pick the perfect accessories for my graduation.”
+                  - generic [ref=e699]:
+                    - generic [ref=e700]:
+                      - paragraph [ref=e701]: Emma L.
+                      - paragraph [ref=e702]: Los Angeles
+                    - generic [ref=e703]: Citrus Canvas Tote
+                - generic [ref=e704]:
+                  - paragraph [ref=e705]: “Fast shipping and the packaging was so cute! You can tell they really care about the 'vibrant' girl experience.”
+                  - generic [ref=e706]:
+                    - generic [ref=e707]:
+                      - paragraph [ref=e708]: Sophie T.
+                      - paragraph [ref=e709]: Seattle
+                    - generic [ref=e710]: Spring Meadow Hat
+                - generic [ref=e711]:
+                  - paragraph [ref=e712]: “I love that Lemondol focuses on high quality at affordable prices. It's rare to find such a curated selection.”
+                  - generic [ref=e713]:
+                    - generic [ref=e714]:
+                      - paragraph [ref=e715]: Lily W.
+                      - paragraph [ref=e716]: Portland
+                    - generic [ref=e717]: Zest Sneakers
+              - generic [ref=e719]:
+                - generic [ref=e720]:
+                  - paragraph [ref=e721]: “The Lemon Zest Candle is absolutely divine. It smells like a summer morning and makes my room feel so bright.”
+                  - generic [ref=e722]:
+                    - generic [ref=e723]:
+                      - paragraph [ref=e724]: Jessica R.
+                      - paragraph [ref=e725]: Chicago
+                    - generic [ref=e726]: Lemon Zest Candle
+                - generic [ref=e727]:
+                  - paragraph [ref=e728]: “My new favorite store. Affordable prices without sacrificing the high-end boutique feel. 10/10 recommended!”
+                  - generic [ref=e729]:
+                    - generic [ref=e730]:
+                      - paragraph [ref=e731]: Anna P.
+                      - paragraph [ref=e732]: Boston
+                    - generic [ref=e733]: Lemon Squeeze Tee
+                - generic [ref=e734]:
+                  - paragraph [ref=e735]: “The whole vibe of the site is so inviting. Shopping here is truly an experience, not just a transaction.”
+                  - generic [ref=e736]:
+                    - generic [ref=e737]:
+                      - paragraph [ref=e738]: Rachel D.
+                      - paragraph [ref=e739]: Denver
+                    - generic [ref=e740]: Accessories Bundle
+                - generic [ref=e741]:
+                  - paragraph [ref=e742]: “The Lemon Zest Candle is absolutely divine. It smells like a summer morning and makes my room feel so bright.”
+                  - generic [ref=e743]:
+                    - generic [ref=e744]:
+                      - paragraph [ref=e745]: Jessica R.
+                      - paragraph [ref=e746]: Chicago
+                    - generic [ref=e747]: Lemon Zest Candle
+                - generic [ref=e748]:
+                  - paragraph [ref=e749]: “My new favorite store. Affordable prices without sacrificing the high-end boutique feel. 10/10 recommended!”
+                  - generic [ref=e750]:
+                    - generic [ref=e751]:
+                      - paragraph [ref=e752]: Anna P.
+                      - paragraph [ref=e753]: Boston
+                    - generic [ref=e754]: Lemon Squeeze Tee
+                - generic [ref=e755]:
+                  - paragraph [ref=e756]: “The whole vibe of the site is so inviting. Shopping here is truly an experience, not just a transaction.”
+                  - generic [ref=e757]:
+                    - generic [ref=e758]:
+                      - paragraph [ref=e759]: Rachel D.
+                      - paragraph [ref=e760]: Denver
+                    - generic [ref=e761]: Accessories Bundle
+          - generic [ref=e764]:
+            - img "Natural ingredients" [ref=e765]
+            - generic [ref=e766]:
+              - heading "100% Natural" [level=3] [ref=e767]
+              - heading "100% You" [level=3] [ref=e768]
+              - generic [ref=e769]:
+                - generic [ref=e770]:
+                  - img [ref=e771]
+                  - generic [ref=e774]: No Harsh Chemicals
+                - generic [ref=e775]:
+                  - img [ref=e776]
+                  - generic [ref=e781]: Plant-Based Goodness
+                - generic [ref=e782]:
+                  - img [ref=e783]
+                  - generic [ref=e786]: Ethically Sourced
+          - generic [ref=e789]:
+            - heading "Join the Lemon Squad" [level=2] [ref=e790]
+            - paragraph [ref=e791]: Get fresh drops, exclusive discounts, and a zest of style in your inbox.
+            - generic [ref=e792]:
+              - textbox "hello@lemonsquad.com" [ref=e793]
+              - button "Join Now" [ref=e794]:
+                - text: Join Now
+                - img [ref=e795]
+            - paragraph [ref=e797]: Unsubscribe anytime • Secure & Private
+          - generic [ref=e798]:
+            - generic: Lemondol
+            - generic [ref=e799]:
+              - generic [ref=e800]:
+                - generic [ref=e801]:
+                  - heading "Lemondol" [level=2] [ref=e802]
+                  - paragraph [ref=e803]: Fresh, vibrant, and affordable. Curating the best for every girl who wants to squeeze the most out of life.
+                  - generic [ref=e804]:
+                    - link "Instagram" [ref=e805] [cursor=pointer]:
+                      - /url: https://x.com/Kerroudjm
+                      - img [ref=e806]
+                    - link "Facebook" [ref=e809] [cursor=pointer]:
+                      - /url: https://x.com/Kerroudjm
+                      - img [ref=e810]
+                    - link "Twitter" [ref=e812] [cursor=pointer]:
+                      - /url: https://x.com/Kerroudjm
+                      - img [ref=e813]
+                - generic [ref=e815]:
+                  - heading "Shop" [level=3] [ref=e816]
+                  - list [ref=e817]:
+                    - listitem [ref=e818]:
+                      - link "All Products" [ref=e819] [cursor=pointer]:
+                        - /url: /shop
+                    - listitem [ref=e820]:
+                      - link "Clothing" [ref=e821] [cursor=pointer]:
+                        - /url: /shop?category=clothing
+                    - listitem [ref=e822]:
+                      - link "Accessories" [ref=e823] [cursor=pointer]:
+                        - /url: /shop?category=accessories
+                    - listitem [ref=e824]:
+                      - link "Lifestyle" [ref=e825] [cursor=pointer]:
+                        - /url: /shop?category=lifestyle
+                    - listitem [ref=e826]:
+                      - link "One-Time Tattoos" [ref=e827] [cursor=pointer]:
+                        - /url: /shop/tattoos
+                    - listitem [ref=e828]:
+                      - link "The Deep Store" [ref=e829] [cursor=pointer]:
+                        - /url: /deep-store
+                    - listitem [ref=e830]:
+                      - link "AI Creative Studio" [ref=e831] [cursor=pointer]:
+                        - /url: /ai-studio
+                - generic [ref=e832]:
+                  - heading "About" [level=3] [ref=e833]
+                  - list [ref=e834]:
+                    - listitem [ref=e835]:
+                      - link "Our Story" [ref=e836] [cursor=pointer]:
+                        - /url: /about
+                    - listitem [ref=e837]:
+                      - link "Sustainability" [ref=e838] [cursor=pointer]:
+                        - /url: /
+                    - listitem [ref=e839]:
+                      - link "Press" [ref=e840] [cursor=pointer]:
+                        - /url: /
+                - generic [ref=e841]:
+                  - heading "Support" [level=3] [ref=e842]
+                  - list [ref=e843]:
+                    - listitem [ref=e844]:
+                      - link "Contact Us" [ref=e845] [cursor=pointer]:
+                        - /url: /
+                    - listitem [ref=e846]:
+                      - link "FAQ" [ref=e847] [cursor=pointer]:
+                        - /url: /
+                    - listitem [ref=e848]:
+                      - link "Shipping" [ref=e849] [cursor=pointer]:
+                        - /url: /
+                    - listitem [ref=e850]:
+                      - link "Returns" [ref=e851] [cursor=pointer]:
+                        - /url: /
+              - generic [ref=e853]:
+                - paragraph [ref=e854]: © 2026 Lemondol. All rights reserved.
+                - generic [ref=e855]:
+                  - link "Privacy Policy" [ref=e856] [cursor=pointer]:
+                    - /url: /
+                  - link "Terms of Service" [ref=e857] [cursor=pointer]:
+                    - /url: /
+    - navigation [ref=e858]:
+      - link "Home" [ref=e859] [cursor=pointer]:
+        - /url: /
+        - img [ref=e860]
+        - generic [ref=e863]: Home
+      - link "Shop" [ref=e864] [cursor=pointer]:
+        - /url: /shop
+        - img [ref=e865]
+        - generic [ref=e868]: Shop
+      - link "Girls" [ref=e869] [cursor=pointer]:
+        - /url: /girls-time
+        - img [ref=e870]
+        - generic [ref=e873]: Girls
+      - link "Studio" [ref=e874] [cursor=pointer]:
+        - /url: /ai-studio
+        - img [ref=e875]
+        - generic [ref=e877]: Studio
+      - link "Lemon" [ref=e878] [cursor=pointer]:
+        - /url: /account
+        - img [ref=e879]
+        - generic [ref=e882]: Lemon
+  - region "Notifications (F8)":
+    - list
+  - button "Open Next.js Dev Tools" [ref=e888] [cursor=pointer]:
+    - img [ref=e889]
+  - alert [ref=e892]
