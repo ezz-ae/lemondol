@@ -112,19 +112,23 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${playfairDisplay.variable} min-h-dvh overflow-x-hidden bg-slate-50 font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${playfairDisplay.variable} bg-slate-50 font-sans antialiased`}>
         <StructuredData data={[getOrganizationSchema(), getWebsiteSchema()]} />
-        <CartProvider>
-          <div className="relative flex min-h-dvh flex-col bg-background">
-            <Header />
-            <LemonOrchestrator hasNeonData={neonData.available} />
-            <main className="flex-1 pb-[calc(7rem+env(safe-area-inset-bottom))]">
-              {children}
-            </main>
-            <BottomNav />
+        <div className="flex min-h-screen w-full justify-center bg-slate-50">
+          <div className="w-full max-w-[1200px] px-4 py-6 lg:px-8 lg:py-8">
+            <div className="relative flex min-h-[100vh] flex-col overflow-hidden rounded-[2.5rem] border border-slate-200 bg-background shadow-2xl">
+              <CartProvider>
+                <Header />
+                <LemonOrchestrator hasNeonData={neonData.available} />
+                <main className="flex-1 pb-[calc(7rem+env(safe-area-inset-bottom))]">
+                  {children}
+                </main>
+                <BottomNav />
+              </CartProvider>
+              <Toaster />
+            </div>
           </div>
-          <Toaster />
-        </CartProvider>
+        </div>
         <Analytics />
       </body>
     </html>
