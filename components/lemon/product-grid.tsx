@@ -32,7 +32,6 @@ export function ProductGrid() {
   const headerRef = useRef<HTMLDivElement>(null)
   const { addItem, likedIds, toggleLike } = useCart()
 
-  const activeCategoryIndex = categories.findIndex((category) => category.id === selectedCategory)
   const filteredProducts = shopProducts.filter((product) => product.category === selectedCategory).slice(0, 4)
 
   useEffect(() => {
@@ -153,7 +152,7 @@ export function ProductGrid() {
             Fresh Finds
           </span>
           <h2
-            className={`font-serif leading-tight text-foreground mb-4 text-balance text-6xl font-bold ${headerVisible ? "animate-blur-in opacity-0" : "opacity-0"}`}
+            className={`mb-4 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl ${headerVisible ? "animate-blur-in opacity-0" : "opacity-0"}`}
             style={headerVisible ? { animationDelay: "0.4s", animationFillMode: "forwards" } : {}}
           >
             Your Daily Squeeze
@@ -166,22 +165,17 @@ export function ProductGrid() {
           </p>
         </div>
 
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex bg-background rounded-full p-1 gap-1 relative flex-wrap justify-center">
-            <div
-              className="absolute top-1 bottom-1 bg-primary rounded-full transition-all duration-300 ease-out shadow-sm"
-              style={{
-                left: `calc(${(100 / categories.length) * activeCategoryIndex}% + 4px)`,
-                width: `calc(${100 / categories.length}% - 4px)`,
-              }}
-            />
+        <div className="mb-12 flex justify-center">
+          <div className="grid w-full max-w-xl grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:justify-center sm:gap-3">
             {categories.map((category) => (
               <button
                 key={category.id}
                 type="button"
                 onClick={() => handleCategoryChange(category.id)}
-                className={`relative z-10 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === category.id ? "text-primary-foreground font-bold" : "text-muted-foreground hover:text-foreground"
+                className={`rounded-full px-4 py-3 text-xs font-semibold transition-all duration-300 sm:px-5 sm:py-2.5 sm:text-sm ${
+                  selectedCategory === category.id
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "bg-background text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {category.label}

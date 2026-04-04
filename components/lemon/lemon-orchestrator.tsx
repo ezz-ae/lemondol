@@ -120,7 +120,7 @@ export function LemonOrchestrator({ hasNeonData }: { hasNeonData?: boolean }) {
   }, [triggerMarketingNudge, hasNeonData])
 
   return (
-    <div className="absolute bottom-[calc(70px+env(safe-area-inset-bottom))] right-4 z-[100] flex flex-col items-end gap-3 sm:bottom-[100px] sm:right-6">
+    <div className="fixed bottom-[calc(88px+env(safe-area-inset-bottom))] right-4 z-[110] flex flex-col items-end gap-3 sm:bottom-[104px] sm:right-6 lg:right-8">
       <AnimatePresence>
         {notification && (
           <motion.div

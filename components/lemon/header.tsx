@@ -11,18 +11,18 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full px-4 py-4 bg-background/80 backdrop-blur-xl border-b border-slate-50">
-        <div className="flex items-center justify-between h-10 relative">
+      <header className="sticky top-0 z-50 w-full border-b border-slate-200/70 bg-background/80 backdrop-blur-xl">
+        <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <button type="button" className="p-2 text-slate-400 active:scale-95 transition-transform" aria-label="Search">
             <Search className="w-5 h-5" />
           </button>
 
           <Link href="/" className="absolute left-1/2 -translate-x-1/2 group">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-primary-foreground font-black text-lg shadow-lg group-active:scale-95 transition-transform">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-lg font-black text-primary-foreground shadow-lg transition-transform group-active:scale-95">
                 L
               </div>
-              <h1 className="font-serif text-xl font-black tracking-tight text-slate-900 hidden sm:block">Lemondol</h1>
+              <h1 className="hidden font-serif text-xl font-black tracking-tight text-slate-900 sm:block">Lemondol</h1>
             </div>
           </Link>
 

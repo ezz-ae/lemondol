@@ -64,11 +64,20 @@
   html {
     scroll-behavior: smooth;
     touch-action: manipulation;
+    max-width: 100%;
   }
   body {
     @apply bg-background text-foreground selection:bg-primary/30;
+    min-height: 100dvh;
+    overflow-x: hidden;
     padding-bottom: env(safe-area-inset-bottom);
     padding-top: env(safe-area-inset-top);
+  }
+  img,
+  video,
+  canvas,
+  iframe {
+    max-width: 100%;
   }
 }
 

@@ -14,40 +14,40 @@ const featuredHeroProducts = heroProductIds.flatMap((id) => {
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] md:min-h-[80vh] flex items-center overflow-hidden bg-background pb-20 pt-10">
+    <section className="relative flex min-h-[85svh] items-center overflow-hidden bg-background pb-24 pt-12 md:min-h-[80vh] lg:pb-28">
       {/* Visual Elements - Floating Lemons/Blobs */}
       <div className="absolute top-[5%] right-[-10%] w-64 h-64 bg-primary/20 rounded-full blur-[80px] animate-pulse" />
       <div className="absolute bottom-[5%] left-[-10%] w-80 h-80 bg-secondary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl w-full mx-auto">
           <div className="w-full text-center">
-            <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-white mb-6 animate-blur-in opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
+            <div className="mb-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-white bg-white/50 px-4 py-2 text-center backdrop-blur-md animate-blur-in opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
                <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-               <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Fresh. Vibrant. Affordable.</span>
+               <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-400 sm:text-[9px]">Fresh. Vibrant. Affordable.</span>
             </div>
             
-            <h2 className="font-serif text-6xl leading-[0.85] mb-6 text-balance text-slate-900 tracking-tighter">
+            <h2 className="mb-6 text-balance font-serif text-5xl leading-[0.85] tracking-tighter text-slate-900 sm:text-6xl lg:text-7xl">
               <span className="block animate-blur-in opacity-0 font-black" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>Style that</span>
               <span className="block animate-blur-in opacity-0 font-black text-primary italic drop-shadow-sm" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>Squeezes.</span>
             </h2>
             
-            <p className="text-base leading-relaxed mb-10 text-slate-500 font-medium animate-blur-in opacity-0" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+            <p className="mx-auto mb-10 max-w-xl text-base font-medium leading-relaxed text-slate-500 animate-blur-in opacity-0" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
               High-quality products that make every day feel like a fresh start.
             </p>
             
             <div className="flex flex-col gap-4 animate-blur-in opacity-0 md:flex-row md:justify-center" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
               <Link
                 href="/shop"
-                className="group inline-flex w-full justify-center gap-4 bg-slate-900 text-white px-10 py-5 rounded-full text-lg font-black tracking-tight transition-all hover:bg-primary hover:text-primary-foreground shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] active:scale-95 sm:w-auto"
+                className="group inline-flex w-full justify-center gap-4 rounded-full bg-slate-900 px-8 py-4 text-base font-black tracking-tight text-white shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all active:scale-95 hover:bg-primary hover:text-primary-foreground sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
               >
                 Explore Shop
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </Link>
               <Link
                 href="/deep-store"
-                className="group inline-flex w-full justify-center gap-4 bg-white border-2 border-slate-100 text-slate-900 px-10 py-5 rounded-full text-lg font-black tracking-tight transition-all active:scale-95 sm:w-auto"
+                className="group inline-flex w-full justify-center gap-4 rounded-full border-2 border-slate-100 bg-white px-8 py-4 text-base font-black tracking-tight text-slate-900 transition-all active:scale-95 sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
               >
                 The Deep Store
               </Link>
